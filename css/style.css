@@ -1,0 +1,162 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+.login{
+  background-color: #d8e9df;
+}
+.login  .first{
+  
+    background-color: rgb(245, 249, 252);
+    /*border: 1px solid rgba(225, 10, 100, 0.621);
+    */border-radius:60px;
+    width: 1200px;
+    height: 500px;
+    margin: auto;
+    margin-top: 5%;
+    
+    display: flex;
+}
+.login .second{
+ border-right: 4px dashed #a2bbad ; 
+height:500px;
+width:600px;
+background-image: url(../img/login.png);
+background-size: cover;
+background-repeat: no-repeat;
+background-position: center;
+}
+.login .third {
+ color: #545755;
+    width: 45%;
+    display: flex;
+    padding: 1.5rem;
+    padding-left: 2.9rem;
+  }
+  .login .third p {
+    width: 80%;
+    margin: auto;
+    margin-top: .5rem;
+    margin-bottom: 1.5rem;
+  }
+  .login .third input {
+    width: 100%;
+    padding: 0.8rem;
+    border-radius: 0.9rem;
+    outline: none;
+    border: 1px #a2bbad solid;
+    margin-bottom: 0.5rem;
+    -webkit-border-radius:;
+    -moz-border-radius:;
+    -ms-border-radius:;
+    -o-border-radius:;
+    padding-left: 25px;
+}
+  .login .third .button {
+    margin-top:20px;
+    margin-left: 80px;
+    width: 60%;
+    padding: 0.8rem;
+    border-radius: 0.9rem;
+    outline: none;
+    border: 2px #a2bbad solid;
+    font-size: ;
+    -webkit-border-radius:;
+    -moz-border-radius:;
+    -ms-border-radius:;
+    -o-border-radius:;
+}
+.login .third a{
+  font-size: 20px;
+  color:#545755;
+}
+.login .third a:hover{
+  cursor: pointer;
+}
+  .icon1 {
+
+    padding-left: 25px;
+    background: url(../img/person.png) no-repeat left white ;
+    background-size: 20px;
+    background-origin: content-box;
+
+  }
+
+  .icon2{
+    padding-left: 25px;
+    background: url(../img/email.png) no-repeat left white ;
+    background-size: 20px;
+    background-origin:content-box;
+
+  }
+  .icon3 {
+    padding-left: 35px;
+    background: url(../img/password.png) no-repeat  left white; 
+    background-origin: content-box;
+    background-size: 20px;
+  }
+  .icon5 {
+    padding-left: 25px;
+    background: url(../img/phone.png) no-repeat left white;
+    background-size: 20px;
+    background-origin: content-box;
+
+  }
+  .login .second.secondsignupcompany{
+    border-right: 4px dashed #a2bbad ; 
+   height:500px;
+   width:600px;
+   background-image: url(../img/CompanySignup.png);
+   background-size: cover;
+   background-repeat: no-repeat;
+   background-position: center;
+  }
+  .login .second.secondsignup{
+    border-right: 4px dashed #a2bbad ; 
+   height:500px;
+   width:600px;
+   background-image: url(../img/signup.png);
+   background-size: cover;
+   background-repeat: no-repeat;
+   background-position: center;
+  }
+  .login .third .Imcompany{
+  text-decoration-color: #a2bbad;
+  padding-left: 30px;
+  padding-inline-start: 20px;
+  -moz-text-decoration-color: #a2bbad;
+}
+
+/* five star page */
+.fivestar input{
+display: none;
+}
+.fivestar input+label{
+  font-size: 30px;
+  color: #ffe400;
+  text-shadow:1px 1px #ffe400 ;
+  cursor: pointer;
+}
+
+.fivestar input:checked+ label ~label
+{
+  color: #838383;
+  ch
+
+}
+.fivestar label:active
+{
+  transform: scale(.8);
+  transition: 0.3s ease;
+  -webkit-transition: 0.3s ease;
+  -moz-transition: 0.3s ease;
+  -ms-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  -webkit-transform: scale(.8);
+  -moz-transform: scale(.8);
+  -ms-transform: scale(.8);
+  -o-transform: scale(.8);
+}
+/* Home Page Style */
+ 
