@@ -222,6 +222,100 @@ body{
   from {background-color: hsl(60, 6%, 74%);}
   to {background-color: hsl(158, 36%, 37%);}
 }
+/* company section */
+.company{
+ /*background-image: url(../img//citySlider.jpg);
+ */background-size: cover;
+ background-repeat: no-repeat;
+ background-position: center;
+ height: 450px;
+ width: 100%;
+ /* border-top: #3c8067 3px dashed; */
+ /* border-top-right-radius:15px ;
+ border-top-left-radius:15px ; */
+ background-color: #d8e9df;
+
+}
+
+ .company h1
+
+{
+  color:#3c8067;
+  padding-top: 30px;
+  text-align: center;
+  /* margin-left: 30%; */
+}
+
+.company h2 {
+  padding-top: 24px;
+  margin-left: 230px;
+  font-weight: lighter;
+  font-size: 22pt;
+}
+
+
+.company p {
+  width: fit-content;
+  margin-left: 276px;
+  padding-top: 30px;
+  margin-right: 350px;
+  color: hsla(228, 12%, 48%, 0.898) !important;
+  font-size: 20px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700px;
+  line-height: 1.5;
+}
+#border {
+  position: relative;
+  width: 11.5%;
+  border: 3px solid #3c8067;
+  margin-top: 20px;
+  margin-left: 235px;
+}
+.company button {
+  border: hsl(158, 36%, 37%) solid 1px;
+  color: aliceblue;
+  width: 220px;
+  background-color: hsl(158, 36%, 37%);
+  border-radius: 10px;
+  font-size: 15px;
+  height: 50px;
+  font-family: "Montserrat", sans-serif;
+  margin-left:560px;
+  margin-top: 65px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  animation-name: example;
+  animation-duration: 4s;
+}
+.company button:hover{
+  cursor: pointer;
+  transform: scale(1.2);
+  -webkit-transform: scale(1.2);
+  -moz-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  -o-transform: scale(1.2);
+}
+ @keyframes example {
+   from {background-color: hsl(60, 6%, 74%);}
+   to {background-color: hsl(158, 36%, 37%);}
+ }
+/* break style */
+.break{
+  background-color: #3c8067;
+  width: 100%;
+  height: 70px;
+}
+
+
+
+
+
+
+
+
 /* contact style */
 /* Start Contact section */
 #contact {
@@ -231,10 +325,10 @@ body{
   /* border: #3c8067 1px solid; */
   
   /* background-color: #d8e9df;  */
-  border-top-left-radius: 4rem;
-  border-bottom-right-radius: 2rem;
-  border-left: 6px solid hsl(158, 36%, 37%);
-  border-bottom: 4px solid hsl(158, 36%, 37%);
+  /* border-top-left-radius: 4rem;
+  border-bottom-right-radius: 2rem; */
+  /* border-left: 6px solid hsl(158, 36%, 37%);
+  border-bottom: 4px solid hsl(158, 36%, 37%); */
 }
 
 #contact .contact-wrapper {
