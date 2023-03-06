@@ -5,9 +5,10 @@
    margin-left: 100px;
     
 }
-body {font-family: Verdana, sans-serif; margin:0}
+body {font-family: Verdana, sans-serif; margin:0;background-color: #eef7f2;} 
 .mySlides {display: none}
 img {vertical-align: middle;}
+
 
 /* Slideshow container */
 .slideshow-container {
