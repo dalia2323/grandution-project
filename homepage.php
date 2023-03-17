@@ -31,16 +31,16 @@
     <div class="city">
       <h1> City Guide </h1>
     </div>
-    <a href="homepage.html" title="Home page">
+    <a href="homepage.php" title="Home page">
       <div class="homePage"> </div>
     </a>
     <a href="#" title="city">
       <div class="citys"></div>
     </a>
-    <a href="signUp.html" title="signUp">
+    <a href="signUp.php" title="signUp">
       <div class="signup2"></div>
     </a>
-    <a href="login.html" title="Login">
+    <a href="login.php" title="Login">
       <div class="login2"></div>
     </a>
   </div>

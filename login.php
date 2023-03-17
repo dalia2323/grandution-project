@@ -32,7 +32,7 @@
             </br> </br></br>
         
 
-                    <a class="Imcompany" href="signUp.html">Create account?</a>
+                    <a class="Imcompany" href="signUp.php">Create account?</a>
 
                 </form>
 

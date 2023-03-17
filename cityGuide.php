@@ -1,3 +1,12 @@
+<?php
+session_start();
+if(!isset($_SESSION['user'])){
+  header('location:login.php');
+  exit();
+}
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,6 +31,7 @@
     <title>Hebron page</title>
 </head>
 <body>
+  <a href="logout.php"> logout</a>
     <div>
         <select name="city" onchange="window.location.href=this.value;">
           <option value="cityGuide.html">المدينة</option>
