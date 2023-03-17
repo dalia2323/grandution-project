@@ -26,6 +26,7 @@ elseif(filter_var($email,FILTER_VALIDATE_EMAIL)==false)
     $errors[]="Invalid Email";
 
 } 
+if(!empty($email)){
 $stm="SELECT email FROM users WHERE email='$email' ";
 $q=$conn->prepare($stm);
 $q->execute();
@@ -34,7 +35,7 @@ $data=$q->fetch();
 if($data){
     $errors[]="Email Already In use";
 }
-
+}
 //validate Password
 if(empty($password))
 {
