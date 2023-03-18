@@ -38,11 +38,11 @@ background-position: center;
     width: 80%;
     margin: auto;
     margin-top: .5rem;
-    margin-bottom: 1.5rem;
+    /* margin-bottom: ; */
   }
   .login .third input {
     width: 100%;
-    padding: 0.8rem;
+    padding: 8px;
     border-radius: 0.9rem;
     outline: none;
     border: 1px #a2bbad solid;
@@ -54,7 +54,7 @@ background-position: center;
     padding-left: 25px;
 }
   .login .third .button {
-    margin-top:20px;
+    margin-top:15px;
     margin-left: 80px;
     width: 60%;
     padding: 0.8rem;
@@ -149,14 +149,9 @@ display: none;
 {
   transform: scale(.8);
   transition: 0.3s ease;
-  -webkit-transition: 0.3s ease;
-  -moz-transition: 0.3s ease;
-  -ms-transition: 0.3s ease;
-  -o-transition: 0.3s ease;
-  -webkit-transform: scale(.8);
-  -moz-transform: scale(.8);
-  -ms-transform: scale(.8);
-  -o-transform: scale(.8);
-}
-/* Home Page Style */
  
+}
+/* warning massage  Style */
+/* .warning{
+color: #c03939;
+} */
