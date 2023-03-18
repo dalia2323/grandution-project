@@ -1,0 +1,152 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+  }
+  body {
+    background-color: #eef7f2;
+  }
+  .navbar {
+  
+    display: flex;
+    background-color: #d8e9df;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    margin-bottom: 10px;
+    box-shadow: 5px 2px 18px 1px #6d706e;
+  }
+  .city {
+
+    font-size: 20px;
+    font-family: 'Big Shoulders Text', cursive;
+  }
+  .city:hover {
+    color: rgb(35, 80, 56);
+    cursor: pointer;
+  }
+  
+  .city::first-letter {
+    font-size: 2.5rem;
+    font-weight: bolder;
+    color: rgb(71, 142, 104);
+  }
+  .qalqiliapage .logo {
+
+    width: 77px;
+    height: 75px;
+    background-image: url(../img/icon.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }  
+  .city {
+
+    padding-left: 15px;
+    padding-top: 20px;
+    width: 300px;
+    height: 75px;
+    color: rgb(47, 47, 47);
+  }
+  
+.qalqiliapage .homePage {
+    margin-top: 23px;
+    margin-left: 500px;
+    width: 30px;
+    height: 30px;
+    background-image: url(../img/Qalqilia\ page\ Imag/home.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  
+  }
+  .qalqiliapage .profile {
+    width: 30px;
+    height: 30px;
+    background-image: url(../img/Qalqilia\ page\ Imag/Person-prfile.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-top: 23px;
+    margin-left: 30px;
+  }
+  .qalqiliapage .Logout {
+    width: 30px;
+  height: 30px;
+  background-image: url(../img/Qalqilia\ page\ Imag/logout.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-top: 23px;
+  margin-left: 30px;
+}
+  
+ .qalqilia-city{
+    padding-left: 15px;
+    padding-top: 20px;
+    width: 300px;
+    height: 75px;
+    color: rgb(47, 47, 47);
+    font-size: 20px;
+    font-family: 'Big Shoulders Text', cursive;
+ } 
+ .streets{
+  border-radius: 50px ;
+  border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
+
+overflow: auto;
+  margin-left: 30px;
+  margin-top: 20px;
+  width: 70%;
+  height: 200px;
+  background-color:#d8e9df ;
+ }
+ .street{
+  border-radius: 50px ;
+padding: 10px;
+margin: 20px;
+width:15% ;
+float: left;
+height: 50px;
+background-color: #c8d6cd;
+text-align: center;
+
+ }
+ .type{
+  width: 570px;
+  height: 70px;
+  margin: 20px;
+  margin-left: 30px;
+  border-radius: 20px;
+  background-color:#d8e9df ;
+
+ }
+ .icons{
+width: 50px;
+
+margin: 10px;
+margin-left: 20px;
+height: 50px;
+float: left;
+text-align: center;
+border-radius: 50%;
+background-color: #c8d6cd;
+
+ }
+ .icons:hover {
+  color: rgb(35, 80, 56);
+    cursor: pointer;
+ }
+ i{
+  font-size:30px;
+  box-sizing:content-box;
+margin-top: 7px;
+
+ }
+.all{
+  font-size: 25px;   
+  font-weight: bold;
+  text-align: center ;
+    padding: 10px;
+ }
