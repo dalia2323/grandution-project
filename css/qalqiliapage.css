@@ -98,7 +98,7 @@
 overflow: auto;
   margin-left: 30px;
   margin-top: 20px;
-  width: 70%;
+  width: 950px;
   height: 200px;
   background-color:#d8e9df ;
  }
@@ -150,3 +150,135 @@ margin-top: 7px;
   text-align: center ;
     padding: 10px;
  }
+ .top{
+  width: 950px;
+height:100px;
+margin-left: 30px;
+margin-top: 20px;
+
+
+ }
+ .trend::first-letter {
+  font-weight: bolder;
+  color: rgb(71, 142, 104);
+}
+.trend{
+  font-size: 70px;
+  font-family: "Fraunces", serif;
+  width: 500px;
+  float: left;
+
+
+}
+.img-trend{
+  width: 400px;
+  height:100px;
+  float: right;
+  padding-top: 0px;
+
+}
+.shop-trind{
+width: 950px;
+height: 800px;
+margin-left: 30px;
+margin-top: 20px;
+background-image: url("../img/Qalqilia page Imag/Building-rafiki.png");
+background-position: center;  
+background-size: cover; 
+background-image:  rgba(76, 175, 80, 5);
+overflow: auto;
+box-shadow: 5px 2px 18px 1px #6d706e;
+  
+}
+
+.shops{
+  border: red solid 1px;
+width: 300px;
+height: 300px;
+margin: 50px;
+float: left;
+margin-left: 80px;
+overflow: auto;
+background-color: #e5f1ea;
+
+
+}
+.imgshop{
+height: 200px;
+}
+.react{
+  height: 48px;
+  padding-left: 10px;
+  float: left;
+right: 0px;
+width: 298px;
+direction: rtl;
+padding-right: 10px;
+
+}
+.description{
+  height: 50px;
+  direction: rtl;
+  text-align: center;
+  padding-top: 5px;
+}
+.description p{
+
+  font-size: 20px;
+
+}
+.main{
+  border: red solid 1px;
+ width: 1350px;
+ float: left;
+}
+.center{
+  
+  width: 1000px;
+  float: left;
+
+}
+.fav-shop{
+  
+    border: blue solid 1px;
+    width: 345px;
+ height:540px;
+  float: right;
+  overflow: auto;
+  }
+  .fav{
+    border: green solid 1px;
+    height: 80px;
+    font-family: "Fraunces", serif;
+    width: 332px;
+    text-align: center;
+    font-size: 30px;
+    padding-top: 15px;
+    box-shadow: 5px 2px 18px 1px #6d706e;
+  }
+  .Favorite{
+    border: gold solid 1px;
+    height: 200px;
+    width: 332px;
+    margin-top: 15px;
+
+  }
+.img-fav{
+  width: 332px;
+  height: 150px;
+}
+.img-fav img{
+  width: 332px;
+height: 150px;
+border: rebeccapurple solid 1px;
+
+}
+.des-fav{
+  border: blue solid 1px;
+  width: 332px;
+  height: 50px;
+  font-size: 20px;
+  direction: rtl;
+  text-align: center;
+  padding-top: 5px;
+}
