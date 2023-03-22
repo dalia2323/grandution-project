@@ -18,6 +18,7 @@
   background: #eee;
   overflow-x: hidden;
   padding: 8px 0;
+  height: 5%;
 
     /* display: flex; */
     background-color: #d8e9df;
@@ -81,9 +82,11 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+    
   
   }
-  .qalqiliapage .profile {
+  .qalqiliapage .profile,
+  .qalqiliapage .Logout {
     width: 30px;
     height: 30px;
     background-image: url(../img/Qalqilia\ page\ Imag/Person-prfile.png);
@@ -94,12 +97,7 @@
     margin-left: 20px;
   }
   .qalqiliapage .Logout {
-    width: 30px;
-  height: 30px;
   background-image: url(../img/Qalqilia\ page\ Imag/logout.png);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
   margin-top: 220px;
   margin-left: 25px;
 }
@@ -122,8 +120,6 @@
 }
 .child{
   background-color: #eef7f2;
- 
-
 border-top-left-radius: 400px;
 width: 1000px;
 height: 76px;
@@ -138,7 +134,7 @@ height: 76px;
   display: flex;
     padding-left: 30px;
     padding-top: 20px;
-    width: 900px;
+    width: 920px;
     height: 75px;
     color: rgb(47, 47, 47);
     font-size: 14px;
@@ -147,7 +143,7 @@ height: 76px;
  }
 
  #street{
-  font-size: 30px;
+  font-size: 25px;
   margin-top: 20px;
   margin-left: 90px;
   text-transform: capitalize;
@@ -155,18 +151,17 @@ height: 76px;
  } 
  .streets{
 
-  border: 1px solid #c8d6cd;
-  border-radius: 25px ;
-  border-bottom-right-radius: 5px;
-  border-top-right-radius: 5px;
-
-
-overflow: auto;
-  margin-left: 82px;
+  /* border: 1px solid #478e6865; */
+  /* border-radius: 25px ; */
+  /* border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px; */
+/* overflow: auto; */
+  margin-left: 92px;
   margin-top: 20px;
-  width: 850px;
-  height: 110px;
-  background-color:#d8e9df ;
+  width: 860px;
+  height: 10%;
+  display: flex;
+  /* background-color:#d8e9df ; */
  }
 
  .street:hover{
@@ -175,32 +170,38 @@ overflow: auto;
 font-weight: bolder;
  }
  .street{
-
   border-radius: 50px ;
 padding: 10px;
-margin: 20px;
+/* margin: 20px; */
+margin-left: .7rem;
 width:15% ;
+display: flex;
+align-items: center;
+justify-content: center;
 float: left;
 height: 50px;
-background-color: #c8d6cd;
+/* background-color: #c8d6cd; */
+border: 2px solid #c8d6cd;
 text-align: center;
 
  }
  .type{
+  border: 1px solid #478e6865;
+height: 5%;
   width: 570px;
-  height: 70px;
+  /* height: 70px; */
   margin: 20px;
-  margin-left: 82px;
+  margin-left: 92px;
   border-radius: 20px;
-  background-color:#d8e9df ;
-
+  /* background-color:#d8e9df ; */
+  /* margin-top: -2rem; */
+margin-bottom: 1px;
  }
  .icons{
-width: 50px;
-
+width: 47px;
 margin: 10px;
 margin-left: 20px;
-height: 50px;
+height: 47px;
 float: left;
 text-align: center;
 border-radius: 50%;
@@ -218,7 +219,7 @@ margin-top: 7px;
 
  }
 .all{
-  font-size: 25px;   
+  font-size: 18px;   
   font-weight: bold;
   text-align: center ;
     padding: 10px;
@@ -236,59 +237,67 @@ margin-top: 20px;
   color: #478e68;
 }
 .trend{
-  margin-left: 100px;
-  font-size: 70px;
+  margin-left: 80px;
+  margin-top: 2px;
+  font-size: 35px;
   font-family: "Fraunces", serif;
   width: 500px;
   float: left;
 
 
 }
-.img-trend{
-  width: 400px;
-  height:100px;
-  float: right;
-  padding-top: 0px;
-
-}
 .shop-trind{
-width: 950px;
-height: 800px;
-margin-left: 30px;
-margin-top: 20px;
-/* background-image: url("../img/Qalqilia page Imag/Building-rafiki.png");
-background-position: center;  
-background-size: cover;  */
+width: 920px;
+/* height: 640px; */
+margin-left: 70px;
+margin-top: -50px;
 background-image:  rgba(76, 175, 80, 5);
 overflow: auto;
-box-shadow: 5px 2px 18px 1px #6d706e;
-  
+padding-left: 6px;
+/* background-color: blue; */
+height: 68vh;
+overflow-y: auto;
+padding-bottom: 9rem;
+  padding-left: 3rem;
+  padding-top: .5rem;
 }
 
 .shops{
-width: 300px;
-height: 300px;
-margin: 50px;
+  border: 1px solid #478e6865;
+border-radius:20px ;
+width: 255px;
+height: 265px;
+margin-right: 27px;
+/* margin-left: 20px; */
 float: left;
-margin-left: 80px;
-overflow: auto;
 background-color: #e5f1ea;
-
+margin-bottom: 20px;
 
 }
+.shops img{
+  /* height: 40%;
+  width: 80%;
+  display: inline-block; */
+  padding: 10px; width:100%;height: 11rem; border-radius: 20px;
+  
+}
 .imgshop{
-height: 200px;
+/* height: 200px; */
 }
 .react{
   height: 48px;
   padding-left: 10px;
   float: left;
-right: 0px;
-width: 298px;
+right: 10px;
+width: 253px;
 direction: rtl;
 padding-right: 10px;
+padding-top: 10px;
+margin-top: -20px;
 
 }
+.react:hover{
+cursor: pointer;}
 .description{
   height: 50px;
   direction: rtl;
@@ -311,11 +320,17 @@ padding-right: 10px;
 
 }
 .fav-shop{
-  
-    width: 345px;
- height:540px;
+  border: 3px solid #478e6865;
+border-radius: 15px;
+    width: 320x;
+ height:590px;
   float: right;
   overflow: auto;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  margin-left: 1000px;
+  position: fixed;
+padding: .2rem;
   }
   .fav{
     height: 80px;
@@ -324,7 +339,7 @@ padding-right: 10px;
     text-align: center;
     font-size: 30px;
     padding-top: 15px;
-    box-shadow: 5px 2px 18px 1px #6d706e;
+    /* box-shadow: 5px 2px 18px 1px #6d706e; */
   }
   .Favorite{
     height: 200px;
@@ -348,4 +363,13 @@ height: 150px;
   direction: rtl;
   text-align: center;
   padding-top: 5px;
+}
+.qalqiliapage{
+  /* background-color: red; */
+  height: 90vh;
+  overflow: hidden;
+}
+.category-section{
+  /* background-color: blueviolet; */
+  display: flex;
 }
