@@ -40,6 +40,47 @@ if(isset($_POST['login']))
   
   
   
+//copmany
+if(!empty($email)){
+  $stm2="SELECT * FROM companies WHERE email='$email' ";
+  $q2=$conn->prepare($stm2);
+  $q2->execute();
+  $data2=$q2->fetch();
+  $hashed_pass2=$data2['password'];
+  $p2=password_verify($password,$hashed_pass2);
+  if(!$data2 AND !$p2){
+      $errors[] = "incorrect email";
+
+  }
+}
+if(!$data2){
+  $errors[]="invalid login";
+}
+else{
+
+  $_SESSION['user']=[
+      "name"=>$data2['name'],
+      "email"=>$email,
+    ];
+  header('location:admin/company.php');
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 
 

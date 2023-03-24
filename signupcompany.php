@@ -2,14 +2,15 @@
 session_start();
 include('handler/db.php');
 if(isset($_SESSION['user'])){
-    header('location:cityGuide.php');
+    header('location:admin/company.php');
     exit();
 }
 if(isset($_POST['submit'])){
 $name=filter_var($_POST['username'],FILTER_SANITIZE_STRING);
 $email=filter_var($_POST['email'],FILTER_SANITIZE_EMAIL);
+$phone=filter_var($_POST['phone'],FILTER_SANITIZE_STRING);
 $password=filter_var($_POST['password'],FILTER_SANITIZE_STRING);
-$cofPassword=filter_var($_POST['ConfPassword'],FILTER_SANITIZE_STRING);
+$cofPassword=filter_var($_POST['Cpass'],FILTER_SANITIZE_STRING);
 $errors=[];
 //validate name
 if(empty($name))
@@ -55,7 +56,7 @@ elseif(($password)!=($cofPassword)){
 
 if(empty($errors)){
     $password=password_hash($password,PASSWORD_DEFAULT);
-    $stm="INSERT INTO users ( name, email, password) VALUES ('$name','$email','$password')";
+    $stm="INSERT INTO companies ( name, email, password) VALUES ('$name','$email','$password')";
     $conn ->prepare($stm)->execute();
     $_POST['username']='';
     $_POST['email']='';
@@ -63,15 +64,18 @@ if(empty($errors)){
         "name"=>$name,
         "email"=>$email
     ];
-    header('location:cityGuide.php');
+    header('location:admin/company.php');
 }
 
 }
 ?>
 
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -79,38 +83,34 @@ if(empty($errors)){
     <!-- link css -->
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <title>Sign up</title>
+    <title>Sign Up as company</title>
     <!-- add icon -->
     <link rel="icon" type="image/x-icon" href="img/icon.png">
 
 </head>
-
 <body class="login">
     <!-- Div 1 first -->
     <div class="first">
         <!-- Div2 second -->
-        <div class="second secondsignup">
-
-        </div>
+        <div class="second secondsignupcompany">
+           
+    </div>
         <!-- Div3 third -->
         <div class="third">
-            <form action="signUp.php" method="post">
-                <h2>Get started</h2></br>
-                <p>Create your own account to be able to enter the site.</p></br>
-
-                <input type="text" class="icon1" name="username" placeholder="      Enter your  Name" required
-                    value="<?php if(isset($_POST['username'])){ echo $_POST['username'];}?>"> <br>
-
-                <input type="email" class="icon2" name="email" placeholder="      Enter your  Email" required
+            <form action="" method="post">
+                    <h2>Get started</h2></br>
+                    <p>Create your own account to be able to enter the site</p></br>
+                   
+                    <input type="text" class="icon1" name="username" placeholder="      Enter your  Name" value="<?php if(isset($_POST['username'])){ echo $_POST['username'];}?>" required> <br>
+                    
+                    <input type="email" class="icon2" name="email" placeholder="      Enter your  Email" required 
                     value="<?php if(isset($_POST['email'])){ echo $_POST['email'];}?>">
-                <br>
-
-                <input type="password" class="icon3" placeholder='        password' name='password' /></br>
-
-
-                <input id="show" type="password" class="icon3" name="ConfPassword"
-                    placeholder="        conform password"><br>
-                <div style="color:red;">
+                    <br>
+                    <input type="tel" class="icon5" name="phone" placeholder="        Enter your  phone" required>
+                    <br>
+                    <input type="password"  class="icon3" placeholder='         password'  name='password' /></br>
+                    <input id="show" type="password" class="icon3" name="Cpass" placeholder="        conform password" required><br>
+                      <div style="color:red;">
                     <?php 
                       if(isset($errors)){
                       if(!empty($errors)){
@@ -120,22 +120,14 @@ if(empty($errors)){
                       }
                   }?>
                 </div>
-
-                <button type="submit" name="submit" class="scompany button"><a>sign up</a></button>
-                <!-- <button type="submit" name="signupcompany"class="scompany button"><a>Iam Company</a></button>  -->
-                </br>
-                </br>
-
-                <a class="Imcompany" href="signupcompany.php">Im company?</a>
-                <a class="Imcompany" href="login.php">Do you Have account?</a>
+                    <button type="submit" name="submit" class="scompany button"><a>sign up</a></button> 
 
             </form>
 
         </div>
-
+        
 
     </div>
-
+    
 </body>
-
 </html>

@@ -1,0 +1,178 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- link css -->
+    <link rel="stylesheet" href="../css/qalqiliapage.css" />
+    <!-- font family -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Text&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700&display=swap" rel="stylesheet"> 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@300&family=Montserrat:wght@600&display=swap" rel="stylesheet">
+<!-- add icon -->
+ <link rel="icon" type="image/x-icon" href="../img/icon.png">
+ <link rel="stylesheet" href="../css/all.min.css">
+    <title>Qalqilia page</title>
+</head>
+<style>
+  /* width */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    /* border-radius: 50px; */
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #a8bdb1; 
+    border-radius: 50px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #c8d6cd; 
+  }
+  </style>
+<body class="qalqiliapage">
+    
+    <div class="navbar">
+      <div class="logo"></div>
+      <!-- <div class="city">
+        <h1> City Guide </h1>
+      </div> -->
+    
+      <a href="homepage.html" title="Home page">
+        <div class="homePage"> </div>
+      </a>
+      <a href="#" title="profile">
+        <div class="profile"></div>
+      </a>
+      <a href="#" title="Logout">
+        <div class="Logout"></div>
+      </a>
+      
+    </div>
+    <div class="main">
+      <div class="center">
+        <div class="parent">
+          <div class="child">
+        <div class="qalqilia-city">
+          <i class="fa-sharp fa-solid fa-city "
+          style="font-size:35px;color:#3c8067;""></i>
+          <h1 style="font-size:45px; padding-left: 10px;font-family: "Fraunces", serif;""> Qalqilia </h1>
+        </div>
+      </div>
+      </div>
+        <div id="street">choose street </div>
+     <div  class="streets">
+      <div class="street">lorem</div>
+      <div class="street">lorem</div>
+      <div class="street">lorem</div>
+     </div>
+     <div class="category-section">
+      <!-- <div class="type-title">Choose Category</div> -->
+     <div class="type">
+      <div class="icons"  title="All"><p class="all">All</p></div>
+      <div class="icons" title="Clothes"><i class="fa-solid fa-shirt"></i></div>
+      <div class="icons" title="Makeup"><i class="fa-solid fa-paintbrush"></i></div>
+      <div class="icons" title="Juices"><i class="fas fa-wine-glass"></i></div>
+      <div class="icons" title="sweets"><i class="fas fa-birthday-cake"></i></div>
+      <div class="icons" title="Restaurants"><i class="fas fa-utensils"></i></div>
+      <div class="icons" title="furniture"><i class="fa-solid fa-couch"></i></div>
+
+     </div>
+     </div>
+     
+     <div class="top">
+      <div class="trend"><p> Trending Shop</p></div>
+     <!-- <div class="img-trend"><img src="../img/Qalqilia page Imag/trend.png" style="height: 200px; width: 424px;margin-top: -48px;" ></div> -->
+     </div>
+      <div class="shop-trind"> 
+    
+     <div class="shops"> 
+      <div class="imgshop">
+        <img src="../img/Qalqilya/1.jpg"  ></div>
+      <div class="description"><p>قلقيلية -الشارع الرئيسي</p></div>
+      <div class="react">
+        <i class="fa-regular fa-heart"></i>
+        <i class="fa-solid fa-star"></i>  
+      </div>
+     </div>
+     
+     <div class="shops"> 
+      <div class="imgshop">
+        <img src="../img/Qalqilya/1.jpg" ></div>
+      <div class="description"><p>قلقيلية -الشارع الرئيسي</p></div>
+      <div class="react">
+        <i class="fa-regular fa-heart"></i>
+        <i class="fa-solid fa-star"></i>  
+      </div>
+     </div>
+     <div class="shops"> 
+      <div class="imgshop">
+        <img src="../img/Qalqilya/1.jpg"  ></div>
+      <div class="description"><p>قلقيلية -الشارع الرئيسي</p></div>
+      <div class="react">
+        <i class="fa-regular fa-heart"></i>
+        <i class="fa-solid fa-star"></i>  
+      </div>
+     </div>
+     <div class="shops"> 
+      <div class="imgshop">
+        <img src="../img/Qalqilya/1.jpg"  ></div>
+      <div class="description"><p>قلقيلية -الشارع الرئيسي</p></div>
+      <div class="react">
+        <i class="fa-regular fa-heart"></i>
+        <i class="fa-solid fa-star"></i>  
+      </div>
+     </div>
+     <div class="shops"> 
+      <div class="imgshop">
+        <img src="../img/Qalqilya/1.jpg"  ></div>
+      <div class="description"><p>قلقيلية -الشارع الرئيسي</p></div>
+      <div class="react">
+        <i class="fa-regular fa-heart"></i>
+        <i class="fa-solid fa-star"></i>  
+      </div>
+     </div>
+     <div class="shops"> 
+      <div class="imgshop">
+        <img src="../img/Qalqilya/1.jpg"  ></div>
+      <div class="description"><p>قلقيلية -الشارع الرئيسي</p></div>
+      <div class="react">
+        <i class="fa-regular fa-heart"></i>
+        <i class="fa-solid fa-star"></i>  
+       </div>
+       </div>
+      </div>
+      </div>
+      <div class="fav-shop">
+        <div class="fav"> Favorite shops</div>
+        <div class="Favorite"> 
+          <div class="img-fav" ><img  src="../img/Qalqilya/10.jpg" alt="" ></div>
+          <div class="des-fav">قلقيلية -الشارع الرئيسي</div>
+        </div>
+        <div class="Favorite"> 
+          <div class="img-fav" ><img  src="../img/Qalqilya/10.jpg" alt="" ></div>
+          <div class="des-fav">قلقيلية -الشارع الرئيسي</div>
+        </div>
+        
+      </div>
+     </div>
+
+ </body>
+</html>
