@@ -1,3 +1,253 @@
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+}
+body {
+  background-color: #eef7f2;
+}
+/* Nav bar section  */
+.navbar {
+
+  display: flex;
+  background-color: #d8e9df;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  margin-bottom: 10px;
+  box-shadow: 5px 2px 18px 1px #6d706e;
+}
+.city {
+
+  font-size: 20px;
+  font-family: 'Big Shoulders Text', cursive;
+}
+
+.city:hover {
+  color: rgb(35, 80, 56);
+  cursor: pointer;
+}
+
+.city::first-letter {
+  font-size: 2.5rem;
+  font-weight: bolder;
+  color: rgb(71, 142, 104);
+}
+.mainpage .logo {
+
+  width: 77px;
+  height: 75px;
+  background-image: url(../img/icon.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.city {
+
+  padding-left: 15px;
+  padding-top: 20px;
+  width: 300px;
+  height: 75px;
+  color: rgb(47, 47, 47);
+}
+ .profile {
+ 
+  background-image: url(../img/Qalqilia\ page\ Imag/Person-prfile.png);
+  width: 30px;
+  height: 30px;
+  margin-top: 23px;
+  margin-left: 30px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.mainpage .homePage {
+  margin-top: 23px;
+  margin-left: 700px;
+  width: 30px;
+  height: 30px;
+  background-image: url(../img/Home\ Page\ Imag/home.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+
+}
+
+.mainpage .citys {
+  width: 30px;
+  height: 30px;
+  background-image: url(../img/Home\ Page\ Imag/city.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-top: 23px;
+  margin-left: 30px;
+}
+
+.Logout {
+  width: 30px;
+  height: 30px;
+  background-image: url(../img/Qalqilia\ page\ Imag/logout.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-top: 23px;
+  margin-left: 30px;}
+.homePage:hover {
+  transform: scale(1.25);
+}
+
+.signup2:hover {
+  transform: scale(1.25);
+}
+
+.citys:hover {
+  transform: scale(1.25);
+}
+
+.login2:hover {
+  transform: scale(1.25);
+}
+ .profile:hover{
+  transform: scale(1.25);
+
+}
+
+.Logout:hover{
+  transform: scale(1.25);
+
+}
+/* first part */
+.firstPart {
+  /* border: 1px solid rgb(233, 94, 8); */
+  height: 540px;
+  width: 100%;
+  display: flex;
+}
+.firstPart1 {
+  height: 540px;
+  width: 33%;
+}
+.firstPart1 h5 {
+  color: hsl(229, 7%, 68%);
+  padding-left: 20px;
+  padding-top: 50px;
+}
+
+.firstPart1 h1 {
+  letter-spacing: .5px;
+  width: 480px;
+  padding-left: 35px;
+  padding-top: 25px;
+  /* font-weight: 700px; */
+  color: hsl(212, 21%, 14%);
+  line-height: 1.2;
+  padding-right: 75px;
+  font-family: "Fraunces", serif;
+}
+.search{
+  width: 300px;
+  height: 150px;
+  /* border: 1px solid rgb(199, 23, 164); */
+  margin-left: 50px;
+  margin-top: 100px;
+  background-color: #d8e9df;
+  border-radius: 20px;
+
+}
+.divslider{
+  width: 300px;
+  height: 150px;
+  /* border: 1px solid rgb(199, 23, 164); */
+  border-radius: 20px;
+  margin-left: 50px;
+  margin-top: 120px; 
+  background-color: #d8e9df;
+ 
+}
+.firstPart1 h1::first-letter {
+  font-size: larger;
+  color: #478e68;
+}
+
+.firstPart p {
+  font-size: 20px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700px;
+  padding-left: 45px;
+  padding-top: 40px;
+  color: #6c7289e5;
+  line-height: 1.5;
+}
+.firstPart2 {
+  /* border: 1px solid rgb(38, 174, 174); */
+
+  background-image: url(../img/firstpart.png);
+  opacity: .87;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 540px;
+
+  width: 33%;
+}
+.firstPart3{
+  /* border: 1px solid rgb(13, 0, 255); */
+  width: 33%;
+
+  height: 540px;
+
+  
+}
+.firstPart3 h1{
+padding-left: 50px;
+padding-top: 105px;
+color: hsl(212, 21%, 14%);
+font-family: "Fraunces", serif;
+}
+
+.firstPart3 h1::first-letter {
+  font-size: larger;
+  color: #478e68;
+}
+.firstPart button {
+  border: hsl(158, 36%, 37%) solid 1px;
+  color: aliceblue;
+  width: 220px;
+  background-color: hsl(158, 36%, 37%);
+  border-radius: 10px;
+  font-size: 15px;
+  height: 50px;
+  font-family: "Montserrat", sans-serif;
+  margin-left: 40px;
+  margin-top: 10px;
+  animation-name: example;
+  animation-duration: 4s;
+}
+.firstPart3 button{
+  margin-top: 50px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .homecenter{
    
     max-width: 800px;
