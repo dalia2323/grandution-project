@@ -56,7 +56,7 @@ if(!isset($_SESSION['user'])){
       <div class="search">
         <i class="fa-solid fa-magnifying-glass" style="color: #3c8067;
         padding-top: 10px; padding-left: 10px; font-size: 30px;"></i>
-       <a href="#"><button id="sliderButton">Let's Search</button></a>
+       <a href="#"><button id="sliderButton" onclick="myFunction()">Let's Search</button></a>
 
       </div>
     </div> 
@@ -65,12 +65,152 @@ if(!isset($_SESSION['user'])){
       <h1>Or By  this slider: </h1>
 
       <div class="divslider">
+        <i class="fa-solid fa-slider"></i>
         <a href="#"><button id="sliderButton">Use City slider</button></a>
 
       </div>
     </div>
   </div> 
     
-  
+  <a href="logout.php"> logout</a>
+    <!-- <div>
+        <select name="city" onchange="window.location.href=this.value;">
+          <option value="cityGuide.html">المدينة</option>
+          <option value="tulkarm.html">طولكرم</option>
+          <option value="nablus.html">نابلس</option>
+          <option value="Ramallah.html">رام الله</option>
+          <option value="Hebron.html">الخليل</option>
+          <option value="Jenin.html">جنين</option>
+          <option value="Jericho.html">اريحا</option>
+          <option value="Bethlehem.html">بيت لحم</option>
+          <option value="Qalqilia.html">قلقيلية</option>
+    
+        </select>
+      </div> -->
+      <div class="homecenter">
+        <!-- <div style=" width: 500px  ;height: 154px;">
+                <img  class="image"src="img/slider.jpg" width="100% "height="449px">
+              </div> -->
+      </div>
+      <div class="slideshow" style=" width: 600px; margin-left: 400px;height: 155px; margin-top: -154px; display:none;">
+        <div class="slideshow-container">
+    
+          <div class="mySlides fade">
+            <div class="numbertext">1 / 8</div>
+            <a href="tulkarm.html"><img src="img/Tulkrem.png" style="width:600px; height: 450px;"></a>
+    
+          </div>
+    
+          <div class="mySlides fade">
+            <div class="numbertext">2 / 8</div>
+            <a href="nablus.html"> <img src="img/Nablus.jpg" style="width:600px; height: 450px;"></a>
+    
+          </div>
+    
+          <div class="mySlides fade">
+            <div class="numbertext">3 / 8</div>
+            <a href="Ramallah.html"><img src="img/Ramallah.jpg" style="width:600px; height: 450px;"></a>
+    
+          </div>
+          <div class="mySlides fade">
+            <div class="numbertext">4 / 8 </div>
+            <a href="Hebron.html"> <img src="img/Hebron.jpg" style="width:600px; height: 450px;"></a>
+    
+          </div>
+          <div class="mySlides fade">
+            <div class="numbertext">5 / 8 </div>
+            <a href="Jenin.html"> <img src="img/Jenin.jpg" style="width:600px; height: 450px;"></a>
+    
+          </div>
+          <div class="mySlides fade">
+            <div class="numbertext">6 / 8 </div>
+            <a href="Jericho.html"> <img src="img/Jericho.jpg" style="width:600px; height: 450px;"></a>
+    
+          </div>
+          <div class="mySlides fade">
+            <div class="numbertext">7 / 8</div>
+            <a href="Bethlehem.html"> <img src="img/Bethlehem.jpg" style="width:600px; height: 450px;"></a>
+    
+          </div>
+          <div class="mySlides fade">
+            <div class="numbertext">8 / 8 </div>
+            <a href="Qalqilia.html"> <img src="img/Qalqilia.jpg" style="width:600px; height: 450px;"></a>
+    
+          </div>
+    
+          <a class="prev" onclick="plusSlides(-1)">❮</a>
+          <a class="next" onclick="plusSlides(1)">❯</a>
+    
+        </div>
+    
+        <br>
+    
+        <div class="circle">
+          <span class="dot" onclick="currentSlide(1)"></span>
+          <span class="dot" onclick="currentSlide(2)"></span>
+          <span class="dot" onclick="currentSlide(3)"></span>
+          <span class="dot" onclick="currentSlide(4)"></span>
+          <span class="dot" onclick="currentSlide(5)"></span>
+          <span class="dot" onclick="currentSlide(6)"></span>
+          <span class="dot" onclick="currentSlide(7)"></span>
+          <span class="dot" onclick="currentSlide(8)"></span>
+        </div>
+      </div>
+      <script>
+        let slideIndex = 1;
+        showSlides(slideIndex);
+    
+        function plusSlides(n) {
+          showSlides(slideIndex += n);
+        }
+    
+        function currentSlide(n) {
+          showSlides(slideIndex = n);
+        }
+    
+        function showSlides(n) {
+          let i;
+          let slides = document.getElementsByClassName("mySlides");
+          let dots = document.getElementsByClassName("dot");
+          if (n > slides.length) { slideIndex = 1 }
+          if (n < 1) { slideIndex = slides.length }
+          for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+          }
+          for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+          }
+          slides[slideIndex - 1].style.display = "block";
+          dots[slideIndex - 1].className += " active";
+        }
+        function myFunction() {
+      document.getElementsByClassName("slideshow").style.display = "block";
+    }
+      </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
 </body>
 </html>
