@@ -10,7 +10,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Techstore | Dashboard</title>
+    <title>City Guide | Dashboard</title>
     <!-- fonts awesome -->
     <link rel="stylesheet" href="../css/all.min.css">
     <!-- Bootstrap -->
@@ -128,10 +128,14 @@ if(isset($_SESSION['status'])&& $_SESSION['status']!='')
                                 </FORM>
                             </td>
                             <td>
-                                <a class="btn btn-sm btn-danger" href="#">
+                              <form method="post" action="code.php">
+                              <input type="hidden" name="delete-id" value="<?php echo $row['id'];?>">
+                              <BUtton type="submit" name="delete-btn" class="btn btn-sm btn-danger">
                                     <i class="fas fa-trash"></i>
                                 </a>
+                                </form>
                             </td>
+
                         </tr>
                     </tbody>
 
