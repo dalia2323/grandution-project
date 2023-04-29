@@ -40,7 +40,22 @@ else{
     header("location:handel-user.php");
 }
 }
+// Delete company
+if(isset($_POST['delete-btn']))
+{
+    $id=$_POST['delete-id'];
+    $query="DELETE FROM companies WHERE id='$id'";
+    $query_run=mysqli_query($conn,$query);
+if($query_run){
+    $_SESSION['success']="Your Data Is Deleted";
+    header("location:handel-company.php");
 
+}
+else{
+    $_SESSION['status']="Your Data NOT Deleted";
+    header("location:handel-company.php");
+}
+}
 
 
 ?>

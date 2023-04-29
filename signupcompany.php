@@ -56,7 +56,7 @@ elseif(($password)!=($cofPassword)){
 
 if(empty($errors)){
     $password=password_hash($password,PASSWORD_DEFAULT);
-    $stm="INSERT INTO companies ( name, email, password) VALUES ('$name','$email','$password')";
+    $stm="INSERT INTO companies ( name, email, password,phone_number) VALUES ('$name','$email','$password','$phone')";
     $conn ->prepare($stm)->execute();
     $_POST['username']='';
     $_POST['email']='';
