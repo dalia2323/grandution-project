@@ -81,7 +81,7 @@ if(isset($_SESSION['status'])&& $_SESSION['status']!='')
 ?> 
             <?php
 
-             $query=" SELECT cities.cityname, streets.streetname, categories.categoryname, shops.shopname, shops.image FROM cities, streets, categories, shops WHERE cities.id = streets.cities_id AND streets.id = shops.street_id AND categories.id = shops.category_id
+             $query=" SELECT cities.cityname, streets.streetname, categories.categoryname, shops.shopname, shops.image, shops.id FROM cities, streets, categories, shops WHERE cities.id = streets.cities_id AND streets.id = shops.street_id AND categories.id = shops.category_id
              ";
              $query_num = mysqli_query($conn,$query); 
               
@@ -111,7 +111,7 @@ if(isset($_SESSION['status'])&& $_SESSION['status']!='')
                 
                 <tbody>
                   <tr>
-                    <th scope="row">1</th>
+                    <th scope="row"><?php echo $row['id'];?></th>
                     <td><?php echo $row['cityname'];?></td>
                     <td><?php echo $row['streetname'];?></td>
                     <td>
@@ -119,14 +119,21 @@ if(isset($_SESSION['status'])&& $_SESSION['status']!='')
                     </td>
                     <td><?php echo $row['shopname'];?></td>
                     <td><?php echo $row['image'];?></td>
-                    <td><a class="btn btn-sm btn-info" href="#">
-                            <i class="fas fa-edit"></i>
-                        </a></td>
+                    <td><FORM method="post" action="edit-shop.php">
+                                  <input type="hidden" name="edit-id" value="<?php echo $row['id'];?>">
+                                    <BUtton type="submit" name="edit-btn" class="btn btn-sm btn-info">
+                                        <i class="fas fa-edit"></i>
+                                        </a></BUtton>
+
+                                </FORM>
                     <td>
                         
-                        <a class="btn btn-sm btn-danger" href="#">
-                            <i class="fas fa-trash"></i>
-                        </a>
+                    <form method="post" action="code.php">
+                              <input type="hidden" name="delete-id" value="<?php echo $row['id'];?>">
+                              <BUtton type="submit" name="delete-btn" class="btn btn-sm btn-danger">
+                                    <i class="fas fa-trash"></i>
+                                </a>
+                                </form>
                     </td>
                   </tr>
                 </tbody>
