@@ -127,7 +127,7 @@ if(isset($_SESSION['status'])&& $_SESSION['status']!='')
                                 </FORM>
                     <td>
                         
-                    <form method="post" action="code.php">
+                    <form method="post" action="shopcode.php">
                               <input type="hidden" name="delete-id" value="<?php echo $row['id'];?>">
                               <BUtton type="submit" name="delete-btn" class="btn btn-sm btn-danger">
                                     <i class="fas fa-trash"></i>

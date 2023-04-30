@@ -67,8 +67,8 @@ session_start();
                         ?>
                     <form method="post" action="shopcode.php">
                     <div class="form-group">
-                              <label>City Name</label>
-                              <input type="text" class="form-control"name="edit-id" value="<?php echo $row['id'];?>">
+                              
+                              <input type="hidden" class="form-control"name="edit-id" value="<?php echo $row['id'];?>">
                             </div>
                             <BR>
                             <div class="form-group">
