@@ -41,9 +41,9 @@ else{
 }
 }
 // Delete company
-if(isset($_POST['delete-btn']))
+if(isset($_POST['delete-btn1']))
 {
-    $id=$_POST['delete-id'];
+    $id=$_POST['delete-id1'];
     $query="DELETE FROM companies WHERE id='$id'";
     $query_run=mysqli_query($conn,$query);
 if($query_run){
@@ -56,6 +56,22 @@ else{
     header("location:handel-company.php");
 }
 }
+
+
+?>
+
+<!-- handel Login Admin -->
+<?php
+if(isset($_POST['submit-admin'])){
+    
+}
+
+
+
+
+
+
+
 
 
 ?>

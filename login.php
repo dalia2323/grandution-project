@@ -63,40 +63,7 @@ else{
       "email"=>$email,
     ];
   header('location:admin/company.php');
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    }
-
-
-?>
-
-
-
-
-
-
-
-
-
-
-
-
+}}?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -124,9 +91,9 @@ else{
                     <h2>Get started</h2></br>
                     <p>please login with your Email and use for your City Guide Account</p></br>
                     
-                    <input type="text"  class="icon2" placeholder='      Email'  name='email' /></br>
+                    <input type="text"  class="" placeholder='Email'  name='email' /></br>
                     
-                    <input type="password" class="icon3" placeholder='      password'  name='password' /></br>
+                    <input type="password" class="" placeholder='password'  name='password' /></br>
                     <div style="color:red;">
                     <?php 
                       if(isset($errors)){
@@ -144,6 +111,8 @@ else{
         
 
                     <a class="Imcompany" href="signUp.php">Create account?</a>
+                    <a class="Imcompany" href="admin/admin-login.php">Admin Login</a>
+
 
                 </form>
 

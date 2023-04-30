@@ -98,18 +98,18 @@ if(empty($errors)){
                 <h2>Get started</h2></br>
                 <p>Create your own account to be able to enter the site.</p></br>
 
-                <input type="text" class="icon1" name="username" placeholder="      Enter your  Name" required
+                <input type="text" class="" name="username" placeholder="Enter your  Name" required
                     value="<?php if(isset($_POST['username'])){ echo $_POST['username'];}?>"> <br>
 
-                <input type="email" class="icon2" name="email" placeholder="      Enter your  Email" required
+                <input type="email" class="" name="email" placeholder="Enter your  Email" required
                     value="<?php if(isset($_POST['email'])){ echo $_POST['email'];}?>">
                 <br>
 
-                <input type="password" class="icon3" placeholder='        password' name='password' /></br>
+                <input type="password" class="" placeholder='password' name='password' /></br>
 
 
-                <input id="show" type="password" class="icon3" name="ConfPassword"
-                    placeholder="        conform password"><br>
+                <input id="show" type="password" class="" name="ConfPassword"
+                    placeholder="conform password"><br>
                 <div style="color:red;">
                     <?php 
                       if(isset($errors)){

@@ -19,20 +19,20 @@ session_start();
 <body>
      
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">TechStore</a>
+        <a class="navbar-brand" href="admin.php">City guide </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                 <li class="nav-item active">
-                  <a class="nav-link" href="#">Products</a>
+                  <a class="nav-link" href="handel-user.php">user</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Categories</a>
+                  <a class="nav-link" href="handel-company.php">Company</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Orders</a>
+                  <a class="nav-link" href="show.php">Shops</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="#">Admins</a>
@@ -51,7 +51,6 @@ session_start();
             </ul>
         </div>
     </nav>
-
     
     <div class="container-fluid py-5">
     <div class="row">

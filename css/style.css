@@ -74,23 +74,23 @@ background-position: center;
 .login .third a:hover{
   cursor: pointer;
 }
-  .icon1 {
+  /* .icon1 {
 
     padding-left: 25px;
     background: url(../img/person.png) no-repeat left white ;
     background-size: 20px;
     background-origin: content-box;
 
-  }
-
+  } */
+/* 
   .icon2{
     padding-left: 25px;
     background: url(../img/email.png) no-repeat left white ;
     background-size: 20px;
     background-origin:content-box;
 
-  }
-  .icon3 {
+  } */
+  /* .icon3 {
     padding-left: 35px;
     background: url(../img/password.png) no-repeat  left white; 
     background-origin: content-box;
@@ -102,7 +102,7 @@ background-position: center;
     background-size: 20px;
     background-origin: content-box;
 
-  }
+  } */
   .login .second.secondsignupcompany{
     border-right: 4px dashed #a2bbad ; 
    height:500px;

@@ -55,7 +55,7 @@
         <h1> City Guide </h1>
       </div> -->
     
-      <a href="homepage.html" title="Home page">
+      <a href="homepage.php" title="Home page">
         <div class="homePage"> </div>
       </a>
       <a href="#" title="profile">
