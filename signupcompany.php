@@ -54,22 +54,44 @@ elseif(($password)!=($cofPassword)){
 
 }
 
+// if(empty($errors)){
+//     $password=password_hash($password,PASSWORD_DEFAULT);
+//     $stm="INSERT INTO companies ( name, email, password,phone_number) VALUES ('$name','$email','$password','$phone')";
+//     $conn ->prepare($stm)->execute();
+//     $_POST['username']='';
+//     $_POST['email']='';
+//     $_SESSION['user']=[
+//         "name"=>$name,
+//         "email"=>$email
+//     ];
+//     header('location:admin/company.php');
+// }
 if(empty($errors)){
-    $password=password_hash($password,PASSWORD_DEFAULT);
-    $stm="INSERT INTO companies ( name, email, password,phone_number) VALUES ('$name','$email','$password','$phone')";
+    $password = password_hash($password, PASSWORD_DEFAULT);
+    $status = 'pending';
+    $stm = "INSERT INTO companies (name, email, password, phone_number, status) VALUES ('$name', '$email', '$password', '$phone', '$status')";
     $conn ->prepare($stm)->execute();
-    $_POST['username']='';
-    $_POST['email']='';
-    $_SESSION['user']=[
-        "name"=>$name,
-        "email"=>$email
+
+    // Send email to user
+    $to = $email;
+    $subject = 'Account Pending Approval';
+    $message = 'Your account is currently pending approval from an admin. You will receive an email when your account is approved.';
+    $headers = 'From: admin@yourwebsite.com' . "\r\n" .
+        'Reply-To: admin@yourwebsite.com' . "\r\n" .
+        'X-Mailer: PHP/' . phpversion();
+    mail($to, $subject, $message, $headers);
+
+    $_POST['username'] = '';
+    $_POST['email'] = '';
+    $_SESSION['user'] = [
+        "name" => $name,
+        "email" => $email,
+        "status" => $status
     ];
     header('location:admin/company.php');
 }
-
 }
 ?>
-
 
 
 
