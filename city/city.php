@@ -1,5 +1,7 @@
 
 <?php session_start();
+
+
 ?>
 
 <!DOCTYPE html>
@@ -58,7 +60,7 @@
         <h1> City Guide </h1>
       </div> -->
     
-      <a href="homepage.php" title="Home page">
+      <a href="../cityGuide.php" title="Home page">
         <div class="homePage"> </div>
       </a>
       <a href="#" title="profile">
@@ -80,7 +82,7 @@
          if (isset($_SESSION['cityName'])) {
           // Sanitize input
           $cityName = filter_var($_SESSION['cityName'], FILTER_SANITIZE_STRING);
-        echo '<h1 style="font-size:45px; padding-left: 10px;font-family: "Fraunces", serif;">' . $cityName . '</h1>';}?>
+        echo '<h1 style="font-size:45px; padding-left: 10px;font-family: "Fraunces", serif;text-transform: uppercase;">' . $cityName . '</h1>';}?>
         </div>
       </div>
       </div>
