@@ -1,4 +1,7 @@
 
+<?php session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -73,7 +76,11 @@
         <div class="qalqilia-city">
           <i class="fa-sharp fa-solid fa-city "
           style="font-size:35px;color:#3c8067;""></i>
-          <h1 style="font-size:45px; padding-left: 10px;font-family: "Fraunces", serif;""> Qalqilia </h1>
+         <?php 
+         if (isset($_SESSION['cityName'])) {
+          // Sanitize input
+          $cityName = filter_var($_SESSION['cityName'], FILTER_SANITIZE_STRING);
+        echo '<h1 style="font-size:45px; padding-left: 10px;font-family: "Fraunces", serif;">' . $cityName . '</h1>';}?>
         </div>
       </div>
       </div>

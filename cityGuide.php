@@ -4,7 +4,41 @@ if(!isset($_SESSION['user'])){
   header('location:login.php');
   exit();
 }
+?><?php
+include('handler/db.php');
+
+// Start session
+
+// Check if city name is submitted
+if (isset($_GET['cityName'])) {
+  // Sanitize input
+  $cityName = filter_var($_GET['cityName'], FILTER_SANITIZE_STRING);
+
+
+
+  // Search for city name in database
+  $sql = "SELECT * FROM cites WHERE name LIKE '%$cityName%'";
+  $result = $conn->query($sql);
+  $errors=[];
+
+  // Check if search returns any result
+  if ($result->num_rows > 0) {
+    // Save city name in session variable
+    $_SESSION['cityName'] = $cityName;
+
+    // Redirect to city.php page
+    header("Location:city/Qalqilia.php");
+    exit();
+  } else {
+    $errors[]="No results found.";
+
+  }
+
+  $conn->close();
+}
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -54,13 +88,27 @@ if(!isset($_SESSION['user'])){
       <h5>CITY Guide</h5>
       <h1>Let's Discover the best in your destination: </h1>
       <div class="search">
+        
         <i class="fa-solid fa-magnifying-glass" style="color: #3c8067;
         padding-top: 10px; padding-left: 10px; font-size: 30px;"></i>
         <div class="search-container">
+          
           <form action="#" method="get">
+            
             <input type="text" placeholder="Search city..." name="cityName">
+            
       <button id="sliderButton" type="submit">Let's Search</button>
-
+     
+      <div style="color:red; margin-left:30px; ">
+                    <?php 
+                      if(isset($errors)){
+                      if(!empty($errors)){
+                       foreach($errors as $msg){
+                        echo $msg . "<br>";
+                        }
+                      }
+                  }?>
+                </div>
           </form>
         </div>
         <div id="cityTable"></div>
@@ -79,8 +127,8 @@ if(!isset($_SESSION['user'])){
   font-size: 16px;
   width: 200px;
   border-radius: 10px;
-  margin-top: 3px;
-  margin-left: 45px;
+  margin-top: px;
+  margin-left: 50px;
 }
 
 
@@ -90,17 +138,31 @@ if(!isset($_SESSION['user'])){
     </div> 
     <div class="firstPart2"></div>
     <div class="firstPart3">
-      <h1>Or By  this slider: </h1>
+
+      <h1>Or By  this Selector: </h1>
 
       <div class="divslider">
+
         <i class="fa-solid fa-slider"></i>
-        <a href="#"><button id="sliderButton">Use City slider</button></a>
+        <select name="city" class="selecter" onchange="window.location.href=this.value;">
+          <option value="cityGuide.html">city</option>
+          <option value="tulkarm.html">Tulkarem</option>
+          <option value="nablus.html">Nablus</option>
+          <option value="Ramallah.html">Ram allah</option>
+          <option value="Hebron.html">Hebron</option>
+          <option value="Jenin.html">Jenin</option>
+          <option value="Jericho.html">Jericho</option>
+          <option value="Bethlehem.html">Bethlehem </option>
+          <option value="city/Qalqilia.html">Qalqilia</option>
+    
+        </select>
+        <!-- <a href="#"><button id="sliderButton">Use City slider</button></a> -->
 
       </div>
     </div>
   </div> 
     
-  <a href="logout.php"> logout</a>
+  <!-- <a href="logout.php"> logout</a> -->
     <!-- <div>
         <select name="city" onchange="window.location.href=this.value;">
           <option value="cityGuide.html">المدينة</option>
@@ -115,11 +177,9 @@ if(!isset($_SESSION['user'])){
     
         </select>
       </div> -->
-      <div class="homecenter">
         <!-- <div style=" width: 500px  ;height: 154px;">
                 <img  class="image"src="img/slider.jpg" width="100% "height="449px">
               </div> -->
-      </div>
       <!-- <div class="slideshow" style=" width: 600px; margin-left: 400px;height: 155px; margin-top: -154px; display:none;">
         <div class="slideshow-container">
     
@@ -215,22 +275,6 @@ if(!isset($_SESSION['user'])){
       document.getElementsByClassName("slideshow").style.display = "block";
     }
       </script> -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
  
 </body>
