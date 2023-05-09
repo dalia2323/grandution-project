@@ -2,7 +2,7 @@
 session_start();
 include('handler/db.php');
 if(isset($_SESSION['user'])){
-    header('location:admin/company.php');
+    header('location:pending.php');
     exit();
 }
 if(isset($_POST['submit'])){
@@ -11,6 +11,8 @@ $email=filter_var($_POST['email'],FILTER_SANITIZE_EMAIL);
 $phone=filter_var($_POST['phone'],FILTER_SANITIZE_STRING);
 $password=filter_var($_POST['password'],FILTER_SANITIZE_STRING);
 $cofPassword=filter_var($_POST['Cpass'],FILTER_SANITIZE_STRING);
+$status = 'pending';
+
 $errors=[];
 //validate name
 if(empty($name))
@@ -54,42 +56,30 @@ elseif(($password)!=($cofPassword)){
 
 }
 
-// if(empty($errors)){
-//     $password=password_hash($password,PASSWORD_DEFAULT);
-//     $stm="INSERT INTO companies ( name, email, password,phone_number) VALUES ('$name','$email','$password','$phone')";
-//     $conn ->prepare($stm)->execute();
-//     $_POST['username']='';
-//     $_POST['email']='';
-//     $_SESSION['user']=[
-//         "name"=>$name,
-//         "email"=>$email
-//     ];
-//     header('location:admin/company.php');
-// }
 if(empty($errors)){
-    $password = password_hash($password, PASSWORD_DEFAULT);
-    $status = 'pending';
-    $stm = "INSERT INTO companies (name, email, password, phone_number, status) VALUES ('$name', '$email', '$password', '$phone', '$status')";
-    $conn ->prepare($stm)->execute();
+    $password=password_hash($password,PASSWORD_DEFAULT);
+    $stm="SELECT * FROM users WHERE email='$email' ";
 
-    // Send email to user
-    $to = $email;
-    $subject = 'Account Pending Approval';
-    $message = 'Your account is currently pending approval from an admin. You will receive an email when your account is approved.';
-    $headers = 'From: admin@yourwebsite.com' . "\r\n" .
-        'Reply-To: admin@yourwebsite.com' . "\r\n" .
-        'X-Mailer: PHP/' . phpversion();
-    mail($to, $subject, $message, $headers);
-
-    $_POST['username'] = '';
-    $_POST['email'] = '';
-    $_SESSION['user'] = [
-        "name" => $name,
-        "email" => $email,
-        "status" => $status
+    // Insert the new company into the database with a 'pending' status
+    $sql = "INSERT INTO companies (username, email, phone, password, status)
+            VALUES ('$username', '$email', '$phone', '$password', '$status')";
+    
+    if ($sql) {
+        $errors[]="Your sign-up request is pending. Please wait for the admin to accept it.";
+        $_SESSION['company_name'] = $username;
+        $_SESSION['company_email'] = $email;
+        header("location:pending.php");
+     
+    }
+    $_POST['username']='';
+    $_POST['email']='';
+    $_SESSION['user']=[
+        "name"=>$name,
+        "email"=>$email
     ];
-    header('location:admin/company.php');
+    header('location:pending.php');
 }
+exit();
 }
 ?>
 
