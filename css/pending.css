@@ -1,0 +1,12 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+  }
+  body {
+    background-color: #eef7f2 !important;
+  }
+ #pending{
+    margin-top: 150px !important;
+
+ }
