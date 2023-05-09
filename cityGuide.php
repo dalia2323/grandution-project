@@ -11,7 +11,7 @@ if (isset($_GET['cityName'])) {
   // Sanitize input
   $cityName = filter_var($_GET['cityName'], FILTER_SANITIZE_STRING);
  // Search for city name in database
-  $sql = "SELECT * FROM cites WHERE name LIKE '%$cityName%'";
+  $sql = "SELECT * FROM cities WHERE cityname LIKE '%$cityName%'";
   $result = $conn->query($sql);
   $errors=[];
 

@@ -1,7 +1,5 @@
-
 <?php session_start();
-
-
+include('../handler/db.php');
 ?>
 
 <!DOCTYPE html>
@@ -87,11 +85,29 @@
       </div>
       </div>
         <div id="street">choose street </div>
-     <div  class="streets">
-      <div class="street">lorem</div>
-      <div class="street">lorem</div>
-      <div class="street">lorem</div>
-     </div>
+        <div  class="streets">
+
+        <?php
+if (isset($_SESSION['cityName'])) {
+    // Sanitize input
+    $cityName = filter_var($_SESSION['cityName'], FILTER_SANITIZE_STRING);
+
+    $query = "SELECT streets.streetname as street
+              FROM cities
+              INNER JOIN streets ON cities.id = streets.cities_id
+              WHERE cities.cityname = '$cityName'";
+
+    $query_run = mysqli_query($conn, $query);
+
+    while ($row = mysqli_fetch_assoc($query_run)) {
+        ?>
+        <div class="street"><?php echo $row['street']; ?></div>
+        <?php
+    }
+}
+?>
+
+      </div>
      <div class="category-section">
       <!-- <div class="type-title">Choose Category</div> -->
      <div class="type">

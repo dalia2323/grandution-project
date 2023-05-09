@@ -60,7 +60,7 @@ session_start();
             <div class="d-flex justify-content-between align-items-center mb-3">
                 <h3>All Products</h3>
                 <a href="#" class="btn btn-success">
-                    Add new
+                    Add shope
                 </a>
             </div>
 
