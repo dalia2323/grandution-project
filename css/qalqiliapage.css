@@ -184,6 +184,7 @@ height: 50px;
 border: 2px solid #c8d6cd;
 text-align: center;
 
+background-color: #c8d6cd;
  }
  .type{
   border: 1px solid #478e6865;
@@ -198,10 +199,11 @@ height: 5%;
 margin-bottom: 1px;
  }
  .icons{
-width: 47px;
+border: #c8d6cd solid 1px;
+width: 55px;
 margin: 10px;
 margin-left: 20px;
-height: 47px;
+height: 50px;
 float: left;
 text-align: center;
 border-radius: 50%;
