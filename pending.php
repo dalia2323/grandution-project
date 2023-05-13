@@ -2,10 +2,27 @@
 include('handler/db.php');
 session_start();
 
-$sql = "SELECT name, email FROM companies";
-$query=mysqli_query($conn,$sql);
-$result=mysqli_fetch_assoc($query);
-$conn->close();
+// $sql = "SELECT name, email FROM companies";
+// $query=mysqli_query($conn,$sql);
+// $result=mysqli_fetch_assoc($query);
+// $conn->close();
+
+
+if(!isset($_SESSION['company'])){
+    header('location:signupcompany.php');
+    exit();
+}
+
+$name = $_SESSION['company']['name'];
+$email = $_SESSION['company']['email'];
+
+// clear the session
+unset($_SESSION['company']);
+
+
+
+
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -28,8 +45,8 @@ $conn->close();
 					</div>
 					<div class="card-body">
 						<p class="lead">Thank you for signing up! Your request is currently pending approval from the administrator. We will send you an email once your account is activated.</p>
-						<p>Your company name is: <?php echo $result['name']; ?></p>
-						<p>Your email address is: <?php echo $result['email']; ?></p>
+						<p>Your company name is:<?php echo $name; ?></p>
+						<p>Your email address is: <?php echo $email; ?></p>
 					</div>
 				</div>
 			</div>

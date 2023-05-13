@@ -11,7 +11,7 @@ $email=filter_var($_POST['email'],FILTER_SANITIZE_EMAIL);
 $phone=filter_var($_POST['phone'],FILTER_SANITIZE_STRING);
 $password=filter_var($_POST['password'],FILTER_SANITIZE_STRING);
 $cofPassword=filter_var($_POST['Cpass'],FILTER_SANITIZE_STRING);
-$status = 'pending';
+$status='pending';
 
 $errors=[];
 //validate name
@@ -19,7 +19,7 @@ if(empty($name))
 {
     $errors[]="You should enter name";
 }
-elseif(strlen($name)>255){
+elseif(strlen($name)>100){
     $errors[]="The name must be less or equal 255 character ";
 
 }
@@ -38,9 +38,18 @@ $stm="SELECT email FROM users WHERE email='$email' ";
 $q=$conn->prepare($stm);
 $q->execute();
 $data=$q->fetch();
-
 if($data){
     $errors[]="Email Already In use";
+}
+$stm2="SELECT email FROM companies WHERE email='$email' ";
+$q2=$conn->prepare($stm2);
+$q2->execute();
+$data2=$q2->fetch();
+
+
+if($data2){
+    $errors[]="Email Already In use";
+
 }
 }
 //validate Password
@@ -61,25 +70,19 @@ if(empty($errors)){
     $stm="SELECT * FROM users WHERE email='$email' ";
 
     // Insert the new company into the database with a 'pending' status
-    $sql = "INSERT INTO companies (username, email, phone, password, status)
-            VALUES ('$username', '$email', '$phone', '$password', '$status')";
+    $sql = "INSERT INTO companies (name, email, phone_number, password, status )
+            VALUES ('$name', '$email', '$phone', '$password', '$status')";
+    $conn ->prepare($sql)->execute();
     
-    if ($sql) {
-        $errors[]="Your sign-up request is pending. Please wait for the admin to accept it.";
-        $_SESSION['company_name'] = $username;
-        $_SESSION['company_email'] = $email;
-        header("location:pending.php");
-     
-    }
+
     $_POST['username']='';
     $_POST['email']='';
-    $_SESSION['user']=[
+    $_SESSION['company']=[
         "name"=>$name,
-        "email"=>$email
+        "email"=> $email
     ];
     header('location:pending.php');
 }
-exit();
 }
 ?>
 

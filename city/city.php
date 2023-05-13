@@ -137,7 +137,7 @@ if (isset($_SESSION['cityName'])) {
    if(isset($_POST['category-btn'])) {
     $streetName = $_POST['street-btn'];
     $categoryName = $_POST['category-btn'];
-    $query ="SELECT shops.shopname as shop,shops.image as image
+    $query ="SELECT shops.shopname ,shops.image 
      FROM cities
       INNER JOIN streets ON cities.id = streets.cities_id
       INNER JOIN shops ON streets.id = shops.street_id 

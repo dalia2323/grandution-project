@@ -62,8 +62,39 @@ else{
 
 <!-- handel Login Admin -->
 <?php
-if(isset($_POST['submit-admin'])){
-    
+if(isset($_POST['submit-admin'])){}
+?>
+<!-- Approval company  -->
+<?php
+// accept company 
+if(isset($_POST['accept-btn']))
+{
+    $id=$_POST['accept-id'];
+
+    $query="UPDATE  companies
+    SET status= 'accept'
+    WHERE id='$id'";
+
+    $query_run=mysqli_query($conn,$query);
+if($query_run){
+    $_SESSION['success']="this account is accept ";
+    header("location:handel-company.php");
+
+}
+}
+// reject company 
+if(isset($_POST['reject-btn'])){
+    $id=$_POST['reject-id']; 
+       $query="UPDATE  companies
+    SET status= 'accept'
+    WHERE id='$id'";
+
+    $query_run=mysqli_query($conn,$query);
+if($query_run){
+    $_SESSION['success']="this account is accept ";
+    header("location:handel-company.php");
+
+}
 }
 
 

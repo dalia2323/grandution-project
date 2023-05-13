@@ -17,41 +17,43 @@ session_start();
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <!--  -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="admin.php">City guide </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                 <li class="nav-item active">
-                  <a class="nav-link" href="handel-user.php">user</a>
+                    <a class="nav-link" href="handel-user.php">user</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="handel-company.php">Company</a>
+                    <a class="nav-link" href="handel-company.php">Company</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="show.php">Shops</a>
+                    <a class="nav-link" href="show.php">Shops</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Admins</a>
+                    <a class="nav-link" href="#">Admins</a>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto mr-5">
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Your name
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Your name
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item" href="#">Profile</a>
-                      <a class="dropdown-item" href="#">Logout</a>
+                        <a class="dropdown-item" href="#">Profile</a>
+                        <a class="dropdown-item" href="#">Logout</a>
                     </div>
                 </li>
             </ul>
@@ -82,7 +84,7 @@ if(isset($_SESSION['status'])&& $_SESSION['status']!='')
   unset($_SESSION['status']);
 }
 
-?> 
+?>
 
                 <?php
              $query=" select * from companies";
@@ -96,10 +98,12 @@ if(isset($_SESSION['status'])&& $_SESSION['status']!='')
                             <th scope="col">Name</th>
                             <th scope="col">Email</th>
                             <th scope="col">Phone Number</th>
-                            <th scope="col">status</th>
                             <th scope="col">Created AT</th>
+                            <th scope="col">status</th>
                             <th scope="col">Edit</th>
                             <th scope="col">Delete</th>
+                            <th scope="col">action</th>
+
                         </tr>
                     </thead>
                     <?php
@@ -121,13 +125,15 @@ if(isset($_SESSION['status'])&& $_SESSION['status']!='')
                             <td>
                                 <?php echo $row['phone_number'];?>
                             </td>
-                            <td>
-                                <?php echo $row['status'];?>
-                            </td>
+
                             <td><?php echo $row['created_at'];?></td>
                             <td>
+                                <?php echo $row['status'];?>
+
+                            </td>
+                            <td>
                                 <FORM method="post" action="edit_company.php">
-                                  <input type="hidden" name="edit-id" value="<?php echo $row['id'];?>">
+                                    <input type="hidden" name="edit-id" value="<?php echo $row['id'];?>">
                                     <BUtton type="submit" name="edit-btn" class="btn btn-sm btn-info">
                                         <i class="fas fa-edit"></i>
                                         </a></BUtton>
@@ -142,14 +148,26 @@ if(isset($_SESSION['status'])&& $_SESSION['status']!='')
                                 </a>
                                 </form>
                             </td> -->
-                           <td>
-                           <form method="post" action="code.php" onsubmit="return confirmDelete(event);">
-    <input type="hidden" name="delete-id1" value="<?php echo $row['id'];?>">
-    <button type="submit" name="delete-btn1" class="btn btn-sm btn-danger">
-      <i class="fas fa-trash"></i>
-    </button>
-  </form>
-                           </td>
+                            <td>
+                                <form method="post" action="code.php" onsubmit="return confirmDelete(event);">
+                                    <input type="hidden" name="delete-id1" value="<?php echo $row['id'];?>">
+                                    <button type="submit" name="delete-btn1" class="btn btn-sm btn-danger">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </form>
+                            </td>
+                            <td>
+
+                                <form method="post" action="code.php" >
+                                    <input type="hidden" name="accept-id" value="<?php echo $row['id'];?>">
+                                    <button type="submit" name="accept-btn" class="btn btn-sm btn-success" onclick="sendEmail('<?php echo $row['email']; ?>')">
+                                  Accept
+                                  </button>
+                                  <input type="hidden" name="reject-id" value="<?php echo $row['id'];?>">
+                                    <button type="submit" name="reject-btn" class="btn btn-sm btn-danger">
+                                        Reject
+                                    </button>
+                                </form>
                         </tr>
                     </tbody>
 
@@ -163,37 +181,54 @@ if(isset($_SESSION['status'])&& $_SESSION['status']!='')
     <script src="js/jquery-3.5.1.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
     <!-- <delete alert> -->
-    <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="confirmDeleteModalLabel">Confirm Delete</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        Are you sure you want to delete this record?
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-danger" onclick="deleteRecord()">Delete</button>
-      </div>
+    <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog"
+        aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="confirmDeleteModalLabel">Confirm Delete</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to delete this record?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-danger" onclick="deleteRecord()">Delete</button>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
 
-<script>
-  function confirmDelete(event) {
-    event.preventDefault(); // prevent form submission
-    $('#confirmDeleteModal').modal('show'); // show the modal
-  }
+    <script>
+    function confirmDelete(event) {
+        event.preventDefault(); // prevent form submission
+        $('#confirmDeleteModal').modal('show'); // show the modal
+    }
 
-  function deleteRecord() {
-    $('#confirmDeleteModal').modal('hide'); // hide the modal
-    $('form').submit(); // submit the form
-  }
-</script>
+    function deleteRecord() {
+        $('#confirmDeleteModal').modal('hide'); // hide the modal
+        $('form').submit(); // submit the form
+    }
+
+
+
+
+
+    //send accept email 
+    function sendEmail(email) {
+  var subject = 'Accepted Company'; // email subject
+  var body = 'Dear Company,\n\nWe are pleased to inform you that your account has been accepted.\n\nBest regards,'; // email body
+  window.open('mailto:' + email + '?subject=' + subject + '&body=' + body);
+}
+
+
+
+
+
+    </script>
 </body>
 
 </html>
