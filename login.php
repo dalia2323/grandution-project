@@ -12,26 +12,21 @@ if(isset($_POST['login']))
     {
         $errors[]="You should enter email ";
     }
-    
-    if(!empty($email)){
-        $stm="SELECT * FROM users WHERE email='$email' ";
-        $q=$conn->prepare($stm);
-        $q->execute();
-        $data=$q->fetch();
-        $hashed_pass=$data['password'];
-        $p=password_verify($password,$hashed_pass);
-        if(!$data AND !$p){
-            $errors[] = "incorrect email";
-
-        }
-    }
-     
-  if(!$data){
-    $errors[]="invalid login";
+    if (!empty($email)) {
+      $stm = "SELECT * FROM users WHERE email='$email' AND password = '$password'";
+      $q = $conn->prepare($stm);
+      $q->execute();
+      $data = $q->fetch();
+      // $hashed_pass = $data['password'];
+      // $p = password_verify($password, $hashed_pass);
+      if (!$data) {
+          $errors[] = "Incorrect email";
+      }
   }
+
   else{
 
-    $_SESSION['user']=[
+    $_SESSION['company']=[
         "name"=>$data['name'],
         "email"=>$email,
       ];
@@ -41,18 +36,18 @@ if(isset($_POST['login']))
   
   
 //copmany
-if(!empty($email)){
-  $stm2="SELECT * FROM companies WHERE email='$email' ";
-  $q2=$conn->prepare($stm2);
+if (!empty($email)) {
+  $stm2 = "SELECT * FROM companies WHERE email='$email' AND password = '$password'";
+  $q2 = $conn->prepare($stm2);
   $q2->execute();
-  $data2=$q2->fetch();
-  $hashed_pass2=$data2['password'];
-  $p2=password_verify($password,$hashed_pass2);
-  if(!$data2 AND !$p2){
-      $errors[] = "incorrect email";
+  $data2 = $q2->fetch();
+  // $hashed_pass2 = $data2['password'];
 
-  }
+  // $p2 = password_verify($password, $hashed_pass2);
+
+
 }
+
 if(!$data2){
   $errors[]="invalid login";
 }

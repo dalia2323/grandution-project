@@ -66,7 +66,7 @@ elseif(($password)!=($cofPassword)){
 }
 
 if(empty($errors)){
-    $password=password_hash($password,PASSWORD_DEFAULT);
+    // $password=password_hash($password,PASSWORD_DEFAULT);
     $stm="SELECT * FROM users WHERE email='$email' ";
 
     // Insert the new company into the database with a 'pending' status

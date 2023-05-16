@@ -130,7 +130,17 @@ if (isset($_SESSION['cityName'])) {
      <!-- <div class="img-trend"><img src="../img/Qalqilia page Imag/trend.png" style="height: 200px; width: 424px;margin-top: -48px;" ></div> -->
      </div>
      <div class="shop-trind"> 
+     <div class="imgshop">
+        <img src="<?php echo $row['image']; ?>"  ></div>
+      <div class="description"><p><?php echo $row['shopname']; ?></p></div>
+      <div class="react">
+        <i class="fa-regular fa-heart"></i>
+        <i class="fa-solid fa-star"></i>  
+      </div>
+      </div>
+
   <div class="shops"> 
+
   <?php
      if (isset($_SESSION['cityName'])) {
   if (isset($_POST['street-btn'])){
@@ -159,7 +169,6 @@ if (isset($_SESSION['cityName'])) {
     }
    } } ?>
   </div>
-</div>
 
      
    
