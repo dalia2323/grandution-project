@@ -1,6 +1,12 @@
 <?php
 include('../handler/db.php');
 session_start();
+
+if(!isset($_SESSION['admin'])){
+  header('location:login.php');
+  exit();
+}
+
 ?>
 <?php
 $conn=mysqli_connect("localhost","root","","graduation_project");
@@ -12,9 +18,16 @@ $conn=mysqli_connect("localhost","root","","graduation_project");
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Techstore | Dashboard</title>
-
+    <title>City Guide | Dashboard</title>
+    <!-- fonts awesome -->
+    <link rel="stylesheet" href="../css/all.min.css">
+    <!-- Bootstrap -->
     <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <!--  -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
     
@@ -34,18 +47,16 @@ $conn=mysqli_connect("localhost","root","","graduation_project");
                 <li class="nav-item">
                   <a class="nav-link" href="show.php">Shops</a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Admins</a>
-                </li>
+              
             </ul>
             <ul class="navbar-nav ml-auto mr-5">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Your name
+                    <?php echo $_SESSION['admin']['name'];?>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item" href="#">Profile</a>
-                      <a class="dropdown-item" href="#">Logout</a>
+                    <a class="dropdown-item" href="admin-profile.php">Profile</a>
+                      <a class="dropdown-item" href="admin-login.php">Logout</a>
                     </div>
                 </li>
             </ul>

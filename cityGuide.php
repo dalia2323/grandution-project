@@ -68,7 +68,7 @@ if (isset($_GET['cityName'])) {
         <a href="#" title="city">
             <div class="citys"></div>
         </a>
-        <a href="#" title="profile">
+        <a href="city/profile.php" title="profile">
             <div class="profile"></div>
         </a>
         <a href="logout.php" title="Logout">

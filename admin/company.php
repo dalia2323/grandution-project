@@ -6,6 +6,7 @@ if(!isset($_SESSION['company'])){
   exit();
 
 }
+
 echo "hello"; 
 
 

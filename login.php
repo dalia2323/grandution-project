@@ -1,64 +1,66 @@
 <?php
 session_start();
 include('handler/db.php');
-if(isset($_POST['login']))
-{
+if (isset($_POST['login'])) {
     global $conn;
-    $email=filter_var($_POST['email'],FILTER_SANITIZE_EMAIL);
-    $password=filter_var($_POST['password'],FILTER_SANITIZE_STRING);
-    $errors=[];
- 
-    if(empty($email))
-    {
-        $errors[]="You should enter email ";
+    $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+    $password = filter_var($_POST['password'], FILTER_SANITIZE_STRING);
+    $errors = [];
+
+    if (empty($email)) {
+        $errors[] = "You should enter an email";
     }
+
+
     if (!empty($email)) {
-      $stm = "SELECT * FROM users WHERE email='$email' AND password = '$password'";
+      $stm = "SELECT * FROM users WHERE email=? AND password=?";
       $q = $conn->prepare($stm);
+      $q->bind_param("ss", $email, $password);
       $q->execute();
-      $data = $q->fetch();
-      // $hashed_pass = $data['password'];
-      // $p = password_verify($password, $hashed_pass);
-      if (!$data) {
+      $result = $q->get_result();
+  
+      if ($result->num_rows == 0) {
           $errors[] = "Incorrect email";
+      } else {
+          $data = $result->fetch_assoc();
+          $_SESSION['user'] = [
+              "name" => $data['name'],
+              "email" => $email,
+          ];
+          $q->close(); // Close the prepared statement
+          header('location: cityGuide.php');
+          exit(); // Add exit after redirection
       }
   }
+  
 
-  else{
-
-    $_SESSION['company']=[
-        "name"=>$data['name'],
-        "email"=>$email,
-      ];
-    header('location:cityGuide.php');
-  }
-  
-  
-  
-//copmany
+   // Company
 if (!empty($email)) {
-  $stm2 = "SELECT * FROM companies WHERE email='$email' AND password = '$password'";
+  $stm2 = "SELECT * FROM companies WHERE email=? AND password=?";
   $q2 = $conn->prepare($stm2);
+  $q2->bind_param("ss", $email, $password);
   $q2->execute();
-  $data2 = $q2->fetch();
-  // $hashed_pass2 = $data2['password'];
+  $result2 = $q2->get_result();
 
-  // $p2 = password_verify($password, $hashed_pass2);
+  if ($result2->num_rows == 0) {
+      $errors[] = "Invalid login";
+  } else {
+      $data2 = $result2->fetch_assoc();
+      $_SESSION['company'] = [
+          "name" => $data2['name'],
+          "email" => $email,
+      ];
+      $q2->close(); // Close the prepared statement
+      header('location:admin/company.php');
+      exit(); // Add exit after redirection
+  }
+}
+
 
 
 }
+?>
 
-if(!$data2){
-  $errors[]="invalid login";
-}
-else{
-
-  $_SESSION['user']=[
-      "name"=>$data2['name'],
-      "email"=>$email,
-    ];
-  header('location:admin/company.php');
-}}?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

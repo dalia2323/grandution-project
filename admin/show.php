@@ -1,19 +1,28 @@
 <?php
-include('../handler/db.php');
 session_start();
+if(!isset($_SESSION['admin'])){
+  header('location:login.php');
+  exit();
+}
+include('../handler/db.php');
+
 ?>
 <!-- success session -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=>, initial-scale=1.0">
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>City Guide | Dashboard</title>
+    <!-- fonts awesome -->
     <link rel="stylesheet" href="../css/all.min.css">
+    <!-- Bootstrap -->
     <link rel="stylesheet" href="../css/bootstrap.min.css">
-    <link rel="stylesheet" href="../plugins/fontawesome-free-5.0.1/css/fontawesome-all.css">
-    <title>Document</title>
+    <!--  -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 
 <body>
@@ -25,27 +34,25 @@ session_start();
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                <li class="nav-item active">
+                <li class="nav-item ">
                   <a class="nav-link" href="handel-user.php">user</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="handel-company.php">Company</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item active">
                   <a class="nav-link" href="show.php">Shops</a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Admins</a>
-                </li>
+            
             </ul>
             <ul class="navbar-nav ml-auto mr-5">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Your name
+                    <?php echo $_SESSION['admin']['name'];?>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item" href="#">Profile</a>
-                      <a class="dropdown-item" href="#">Logout</a>
+                    <a class="dropdown-item" href="admin-profile.php">Profile</a>
+                      <a class="dropdown-item" href="admin-login.php">Logout</a>
                     </div>
                 </li>
             </ul>

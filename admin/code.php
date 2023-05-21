@@ -1,6 +1,11 @@
 <?php
 include('../handler/db.php');
 session_start();
+if(!isset($_SESSION['admin'])){
+  header('location:login.php');
+  exit();
+}
+
 $conn=mysqli_connect("localhost","root","","graduation_project");
 
 ?>

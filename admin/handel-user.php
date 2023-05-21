@@ -1,6 +1,12 @@
 <?php
 include('../handler/db.php');
+
 session_start();
+if(!isset($_SESSION['admin'])){
+  header('location:login.php');
+  exit();
+}
+
 ?>
 <!-- success session -->
 
@@ -40,18 +46,16 @@ session_start();
                 <li class="nav-item">
                   <a class="nav-link" href="show.php">Shops</a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Admins</a>
-                </li>
+                
             </ul>
             <ul class="navbar-nav ml-auto mr-5">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Your name
+                    <?php echo $_SESSION['admin']['name'];?>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item" href="#">Profile</a>
-                      <a class="dropdown-item" href="#">Logout</a>
+                    <a class="dropdown-item" href="admin-profile.php">Profile</a>
+                      <a class="dropdown-item" href="admin-login.php">Logout</a>
                     </div>
                 </li>
             </ul>
@@ -79,6 +83,7 @@ if(isset($_SESSION['success'])&& $_SESSION['success']!='')
 if(isset($_SESSION['status'])&& $_SESSION['status']!='')
 {
   echo '<h2 class="bg-info">'.$_SESSION['status']. '</h2>';
+
   unset($_SESSION['status']);
 }
 
@@ -120,7 +125,7 @@ if(isset($_SESSION['status'])&& $_SESSION['status']!='')
                             <td>
                                 <?php echo $row['status'];?>
                             </td>
-                            <td><?php echo $row['created_at'];?></td>
+                            <td><?php echo $row['created-at'];?></td>
                             <td>
                                 <FORM method="post" action="edit-user.php">
                                   <input type="hidden" name="edit-id" value="<?php echo $row['id'];?>">

@@ -22,7 +22,7 @@ if(isset($_POST['submit-admin']))
     // If there are no errors, try to log in the user
     if(count($errors) == 0) {
         // Prepare a SELECT statement to retrieve the admin with the given email
-        $stmt = $conn->prepare("SELECT * FROM admins WHERE email = ?");
+        $stmt = $conn->prepare("SELECT * FROM users WHERE email = ? AND type ='admin'");
         $stmt->bind_param("s", $email);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -33,10 +33,10 @@ if(isset($_POST['submit-admin']))
 
             if($password == $row['password']) {
                 // Password is correct, store user session data and redirect to dashboard
-                $_SESSION['admin'] = array(
-                    'email' => $email,
-                    'name' => $row['name']
-                );
+                $_SESSION['company']=[
+                    "name"=>$row['name'],
+                    "email"=> $email
+                ];
                 header("Location: admin.php");
                 exit();
             } else {
@@ -49,12 +49,7 @@ if(isset($_POST['submit-admin']))
         }
     }
 
-    // If there are errors, display them
-    // if(count($errors) > 0) {
-    //     foreach($errors as $error) {
-    //         echo "<p>$error</p>";
-    //     }
-    // }
+
 }
 ?>
 

@@ -1,5 +1,9 @@
 <?php session_start();
 include('../handler/db.php');
+if(!isset($_SESSION['user'])){
+  header('location:login.php');
+  exit();
+}
 ?>
 
 <!DOCTYPE html>
@@ -61,10 +65,10 @@ include('../handler/db.php');
       <a href="../cityGuide.php" title="Home page">
         <div class="homePage"> </div>
       </a>
-      <a href="#" title="profile">
+      <a href="profile.php" title="profile">
         <div class="profile"></div>
       </a>
-      <a href="#" title="Logout">
+      <a href="../logout.php" title="Logout">
         <div class="Logout"></div>
       </a>
       

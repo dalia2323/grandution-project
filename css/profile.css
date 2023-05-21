@@ -1,0 +1,235 @@
+/* .container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+  }
+  
+  h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
+  }
+  
+  h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  p {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+  }
+  
+  .contact-info {
+    margin-top: 30px;
+  }
+  
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  li {
+    margin-bottom: 10px;
+  } */
+  * {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+  }
+  body {
+    background-color: #eef7f2;
+  }
+  /* Nav bar section  */
+  .navbar {
+  
+    display: flex;
+    background-color: #d8e9df;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    margin-bottom: 10px;
+    box-shadow: 5px 2px 18px 1px #6d706e;
+  }
+  .city {
+  
+    font-size: 20px;
+    font-family: 'Big Shoulders Text', cursive;
+  }
+  
+  .city:hover {
+    color: rgb(35, 80, 56);
+    cursor: pointer;
+  }
+  
+  .city::first-letter {
+    font-size: 2.5rem;
+    font-weight: bolder;
+    color: rgb(71, 142, 104);
+  }
+  .mainpage .logo {
+  
+    width: 77px;
+    height: 75px;
+    background-image: url(../img/icon.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  
+  .city {
+  
+    padding-left: 15px;
+    padding-top: 20px;
+    width: 300px;
+    height: 75px;
+    color: rgb(47, 47, 47);
+  }
+   .profile {
+   
+    background-image: url(../img/Qalqilia\ page\ Imag/Person-prfile.png);
+    width: 30px;
+    height: 30px;
+    margin-top: 23px;
+    margin-left: 30px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  .mainpage .homePage {
+    margin-top: 23px;
+    margin-left: 700px;
+    width: 30px;
+    height: 30px;
+    background-image: url(../img/Home\ Page\ Imag/home.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  
+  }
+  
+  .mainpage .citys {
+    width: 30px;
+    height: 30px;
+    background-image: url(../img/Home\ Page\ Imag/city.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-top: 23px;
+    margin-left: 30px;
+  }
+  
+  .Logout {
+    width: 30px;
+    height: 30px;
+    background-image: url(../img/Qalqilia\ page\ Imag/logout.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-top: 23px;
+    margin-left: 30px;}
+  .homePage:hover {
+    transform: scale(1.25);
+  }
+  
+  .signup2:hover {
+    transform: scale(1.25);
+  }
+  
+  .citys:hover {
+    transform: scale(1.25);
+  }
+  
+  .login2:hover {
+    transform: scale(1.25);
+  }
+   .profile:hover{
+    transform: scale(1.25);
+  
+  }
+  
+  .Logout:hover{
+    transform: scale(1.25);
+  
+  }
+
+  .card {
+    width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #d8e9df;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+    text-align: center;
+    margin-top: 90px;
+  }
+  
+  img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+  }
+  
+  h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
+  }
+  
+  h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  p {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+  }
+  
+  .contact-info {
+    margin-top: 30px;
+  }
+  
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  li {
+    margin-bottom: 10px;
+  }
+  
+.footer{
+    width: 100%;
+    height: 100px;
+    background-image: url(../img/company-removebg-preview.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
