@@ -6,6 +6,7 @@ session_start();
 
 ?>
 <?php
+if(isset($_POST['addternd'])){
                         $cityname = $_POST['cityname'];
                         $shopname = $_POST['shopname'];
                         $description= $_POST['description'];
@@ -14,6 +15,6 @@ session_start();
                        
                        mysqli_query($conn,$sql);
                         
-
+}
               ?>
                           

@@ -109,7 +109,7 @@ select{
                             <br>
                             <br>
                             <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="customFile"name="image"require>
+                                <input type="file" class="custom-file-input" id="customFile"name="image"require>git
                                 <label class="custom-file-label" for="customFile">Choose Image</label>
                             </div>
                             <br>
