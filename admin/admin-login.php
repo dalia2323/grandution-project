@@ -33,10 +33,10 @@ if(isset($_POST['submit-admin']))
 
             if($password == $row['password']) {
                 // Password is correct, store user session data and redirect to dashboard
-                $_SESSION['company']=[
-                    "name"=>$row['name'],
-                    "email"=> $email
-                ];
+                $_SESSION['admin'] = array(
+                    'email' => $email,
+                    'name' => $row['name']
+  );
                 header("Location: admin.php");
                 exit();
             } else {

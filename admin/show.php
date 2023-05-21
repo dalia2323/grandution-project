@@ -1,7 +1,7 @@
 <?php
 session_start();
 if(!isset($_SESSION['admin'])){
-  header('location:login.php');
+  header('location:admin-login.php');
   exit();
 }
 include('../handler/db.php');
@@ -59,6 +59,8 @@ include('../handler/db.php');
         </div>
     </nav>
     
+  
+    
     <div class="container-fluid py-5">
     <div class="row">
 
@@ -66,9 +68,8 @@ include('../handler/db.php');
 
             <div class="d-flex justify-content-between align-items-center mb-3">
                 <h3>All Products</h3>
-                <a href="#" class="btn btn-success">
-                    Add shope
-                </a>
+                <div class="text-center mt-5">
+                <a class="btn btn-dark" href="add.php"name="add-shop">Add shop</a>                            </div>
             </div>
 
 
@@ -102,8 +103,6 @@ if(isset($_SESSION['status'])&& $_SESSION['status']!='')
                     <th scope="col">Category</th>
                     <th scope="col">shop name</th>
                     <th scope="col">Image</th>
-                    
-                    <th scope="col">Edit</th>
                     <th scope="col">delete</th>
                     
                   </tr>
@@ -125,14 +124,7 @@ if(isset($_SESSION['status'])&& $_SESSION['status']!='')
                     </td>
                     <td><?php echo $row['shopname'];?></td>
                     <td><?php echo $row['image'];?></td>
-                    <td><FORM method="post" action="edit-shop.php">
-                                  <input type="hidden" name="edit-id" value="<?php echo $row['id'];?>">
-                                    <BUtton type="submit" name="edit-btn" class="btn btn-sm btn-info">
-                                        <i class="fas fa-edit"></i>
-                                        </a></BUtton>
-
-                                </FORM>
-                    <td>
+                   <td>
                         
                     <form method="post" action="shopcode.php">
                               <input type="hidden" name="delete-id" value="<?php echo $row['id'];?>">
