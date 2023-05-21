@@ -43,9 +43,12 @@ if(!isset($_SESSION['admin'])){
                 <li class="nav-item">
                   <a class="nav-link" href="show.php">Shops</a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Admins</a>
+                <li class="nav-item ">
+                  <a class="nav-link" href="addtrend.php">addtrend</a>
                 </li>
+                <li class="nav-item ">
+                  <a class="nav-link" href="show-trendshop.php">Trend shop</a>
+</li>
             </ul>
             <ul class="navbar-nav ml-auto mr-5">
                 <li class="nav-item dropdown">
