@@ -131,61 +131,46 @@ if (isset($_SESSION['cityName'])) {
      
      <div class="top">
       <div class="trend"><p> Trending Shop</p></div>
-     <!-- <div class="img-trend"><img src="../img/Qalqilia page Imag/trend.png" style="height: 200px; width: 424px;margin-top: -48px;" ></div> -->
+
      </div>
-     <div class="shop-trind"> 
-     <div class="imgshop">
-        <img src="<?php echo $row['image']; ?>"  ></div>
-      <div class="description"><p><?php echo $row['shopname']; ?></p></div>
-      <div class="react">
-        <i class="fa-regular fa-heart"></i>
-        <i class="fa-solid fa-star"></i>  
-      </div>
-      </div>
-
-  <div class="shops"> 
-
-  <?php
-     if (isset($_SESSION['cityName'])) {
-  if (isset($_POST['street-btn'])){
-   if(isset($_POST['category-btn'])) {
-    $streetName = $_POST['street-btn'];
-    $categoryName = $_POST['category-btn'];
-    $query ="SELECT shops.shopname ,shops.image 
-     FROM cities
-      INNER JOIN streets ON cities.id = streets.cities_id
-      INNER JOIN shops ON streets.id = shops.street_id 
-      INNER JOIN categories ON shops.category_id = categories.id 
-      WHERE cities.cityname = '$cityName' AND streets.streetname = '$streetName'
-      AND categories.categoryname = '$categoryName'";
-      $query_run = mysqli_query($conn, $query);  
-      while ($row = mysqli_fetch_assoc($query_run)) {
-        ?>
-      <div class="imgshop">
-        <img src="<?php echo $row['image']; ?>"  ></div>
-      <div class="description"><p><?php echo $row['shopname']; ?></p></div>
-      <div class="react">
-        <i class="fa-regular fa-heart"></i>
-        <i class="fa-solid fa-star"></i>  
-      </div>
+      <div class="shop-trind"> 
       <?php 
+    $trendshop_query = "SELECT s.T_shope_name	 AS shop_name ,
+    s.description AS description , s.image AS image
+          FROM trendshops AS s
+          INNER JOIN cities AS c ON s.cities_id  = c.id
+          WHERE c.cityname	 = '$cityName'";
+
+    $trendshop_result = mysqli_query($conn, $trendshop_query);
+    if ($trendshop_result) {
+      // Loop through the results and display the shop names
+      while ($row = mysqli_fetch_assoc($trendshop_result)) {   
+?>
+<div class="shops"> 
+      <div class="imgshop">
+        <img src="<?php echo $row['image']?>  " ></div>
+      <div class="description"><p> <?php echo $row['shop_name']?> </p></div>
+     
+      <div class="react">
+        <i class="fa-regular fa-heart"></i>
+        <i class="fa-solid fa-star"></i>  
+      </div>
+     </div>
+     <?php
       }
     }
-   } } ?>
-  </div>
+    ?>
+    </div>
 
-     
-   
-      </div>
       </div>
       <div class="fav-shop">
         <div class="fav"> Favorite shops</div>
         <div class="Favorite"> 
-          <div class="img-fav" ><img  src="../img/Qalqilya/10.jpg" alt="" ></div>
+          <div class="img-fav" ><img  src="../img/Qalqilya/20.jpg" alt="" ></div>
           <div class="des-fav">قلقيلية -الشارع الرئيسي</div>
         </div>
         <div class="Favorite"> 
-          <div class="img-fav" ><img  src="../img/Qalqilya/10.jpg" alt="" ></div>
+          <div class="img-fav" ><img  src="../img/Qalqilya/9.jpg" alt="" ></div>
           <div class="des-fav">قلقيلية -الشارع الرئيسي</div>
         </div>
         
