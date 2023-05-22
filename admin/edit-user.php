@@ -61,7 +61,7 @@ $conn=mysqli_connect("localhost","root","","graduation_project");
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="admin-profile.php">Profile</a>
-                      <a class="dropdown-item" href="admin-login.php">Logout</a>
+                      <a class="dropdown-item" href="admin-logout.php">Logout</a>
                     </div>
                 </li>
             </ul>

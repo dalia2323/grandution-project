@@ -5,8 +5,8 @@ include('../handler/db.php');
 ?>
 <?php
 session_start();
-if(!isset($_SESSION['company'])){
-  header('location:../admin-login.php');
+if(!isset($_SESSION['admin'])){
+  header('location:admin-login.php');
   exit();
 
 }
@@ -69,7 +69,7 @@ select{
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="admin-profile.php">Profile</a>
-                      <a class="dropdown-item" href="admin-login.php">Logout</a>
+                      <a class="dropdown-item" href="admin-logout.php">Logout</a>
                     </div>
                 </li>
             </ul>
