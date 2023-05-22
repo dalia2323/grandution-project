@@ -70,7 +70,7 @@ select{
         <div class="row">
 
             <div class="col-md-6 offset-md-3">
-                <h3 class="mb-3">Add trendgit shop</h3>
+                <h3 class="mb-3">Add trend shop</h3>
                 <div class="card">
                     <div class="card-body p-5">
                         <form action="codetrend.php" method="post">
