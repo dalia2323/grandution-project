@@ -333,6 +333,7 @@ border-radius: 15px;
   margin-left: 1000px;
   position: fixed;
 padding: .2rem;
+overflow: scroll;
   }
   .fav{
     height: 80px;
@@ -342,13 +343,25 @@ padding: .2rem;
     font-size: 30px;
     padding-top: 15px;
     /* box-shadow: 5px 2px 18px 1px #6d706e; */
+    overflow: scroll;
+
   }
+  
   .Favorite{
     height: 200px;
     width: 332px;
     margin-top: 15px;
+    overflow: scroll;
 
   }
+  .favorite-button {
+    color: black; /* Default color */
+  }
+  
+  .favorite-button.checked {
+    color: pink; /* Color when checked */
+  }
+  
 .img-fav{
   width: 332px;
   height: 150px;
