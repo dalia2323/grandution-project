@@ -23,9 +23,7 @@ if(!isset($_SESSION['admin'])){
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <!--  -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 </head>
 
 <body>
@@ -48,11 +46,11 @@ if(!isset($_SESSION['admin'])){
                     <a class="nav-link" href="show.php">Shops</a>
                 </li>
                 <li class="nav-item ">
-                  <a class="nav-link" href="addtrend.php">addtrend</a>
+                    <a class="nav-link" href="addtrend.php">addtrend</a>
                 </li>
                 <li class="nav-item ">
-                  <a class="nav-link" href="show-trendshop.php">Trend shop</a>
-</li>
+                    <a class="nav-link" href="show-trendshop.php">Trend shop</a>
+                </li>
             </ul>
             <ul class="navbar-nav ml-auto mr-5">
                 <li class="nav-item dropdown">
@@ -61,7 +59,7 @@ if(!isset($_SESSION['admin'])){
                         <?php echo $_SESSION['admin']['name'];?>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="admin-profile.php">Profile</a>
+                        <a class="dropdown-item" href="admin-profile.php">Profile</a>
                         <a class="dropdown-item" href="admin-logout.php">Logout</a>
                     </div>
                 </li>
@@ -167,13 +165,17 @@ if(isset($_SESSION['status'])&& $_SESSION['status']!='')
                             </td>
                             <td>
 
-                                <form method="post" action="code.php" >
-                                    <input type="hidden" name="accept-id" value="<?php echo $row['id'];?>">
-                                    <button type="submit" name="accept-btn" class="btn btn-sm btn-success" onclick="sendEmail('<?php echo $row['email']; ?>')">
-                                  Accept
-                                  </button>
-                                  <input type="hidden" name="reject-id" value="<?php echo $row['id'];?>">
-                                    <button type="submit" name="reject-btn" class="btn btn-sm btn-danger">
+                                <form method="post" action="code.php">
+                                    
+                                <input type="hidden" name="accept-id" value="<?php echo $row['id']; ?>">
+                                    <button id="accept-btn" type="submit" name="accept-btn"
+                                        class="btn btn-sm btn-success"
+                                        onclick="sendEmail('<?php echo $row['email']; ?>'); hideShopDiv();">
+                                        Accept
+                                    </button>
+                                    <input type="hidden" name="reject-id" value="<?php echo $row['id']; ?>">
+                                    <button id="reject-btn" type="submit" name="reject-btn"
+                                        class="btn btn-sm btn-danger">
                                         Reject
                                     </button>
                                 </form>
@@ -187,8 +189,7 @@ if(isset($_SESSION['status'])&& $_SESSION['status']!='')
 
         </div>
     </div>
-    <script src="js/jquery-3.5.1.min.js"></script>
-    <script src="js/bootstrap.bundle.min.js"></script>
+
     <!-- <delete alert> -->
     <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog"
         aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
@@ -210,7 +211,11 @@ if(isset($_SESSION['status'])&& $_SESSION['status']!='')
             </div>
         </div>
     </div>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
     <script>
     function confirmDelete(event) {
         event.preventDefault(); // prevent form submission
@@ -228,16 +233,22 @@ if(isset($_SESSION['status'])&& $_SESSION['status']!='')
 
     //send accept email 
     function sendEmail(email) {
-  var subject = 'Accepted Company'; // email subject
-  var body = 'Dear Company,\n\nWe are pleased to inform you that your account has been accepted.\n\nBest regards,'; // email body
-  window.open('mailto:' + email + '?subject=' + subject + '&body=' + body);
-}
-
-
-
-
-
+        var subject = 'Accepted Company'; // email subject
+        var body =
+        'Dear Company,\n\nWe are pleased to inform you that your account has been accepted.\n\nBest regards,'; // email body
+        window.open('mailto:' + email + '?subject=' + subject + '&body=' + body);
+    }
+//مش زابط
+    function hideShopDiv() {
+        console.log("hideShopDiv() function called"); // Add this line
+        var acceptBtn = document.getElementById("accept-btn");
+        acceptBtn.style.display = "none";
+        var rejectBtn = document.getElementById("reject-btn");
+        rejectBtn.style.display = "none";
+    
+    }
     </script>
+
 </body>
 
 </html>

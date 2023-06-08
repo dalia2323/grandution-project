@@ -123,6 +123,7 @@ if (!isset($_SESSION['user'])) {
             <div class="category-section">
                 <!-- <div class="type-title">Choose Category</div> -->
                 <div class="type">
+                    
                     <form action="" method="post">
                         <button class="icons" type="submit" name="allcategory-btn" onclick="hideShopDiv()"
                             title="all">All</button>
@@ -169,7 +170,7 @@ if (!isset($_SESSION['user'])) {
       ?>
             <div class="shops" id="shopdiv">
                 <div class="imgshop">
-                    <img src="<?php echo $row['shopImage'] ?>">
+                <img src="<?php echo $row['shopImage']; ?>">
                 </div>
                 <div class="description">
                     <p> <?php echo $row['shop_name'] ?> </p>
@@ -184,6 +185,7 @@ if (!isset($_SESSION['user'])) {
         }
       } elseif (isset($_POST['allcategory-btn'])) {
         $street = $_SESSION['street-name'];
+        
         $query = "SELECT shops.shopname AS shop_name, shops.image as shopImage
               FROM cities
               INNER JOIN streets ON cities.id = streets.cities_id

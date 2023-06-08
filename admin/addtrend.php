@@ -2,12 +2,40 @@
 include('../handler/db.php');
 session_start();
 if(!isset($_SESSION['admin'])){
-  header('location:admin-login.php');
-  exit();
-
+    header('location:admin-login.php');
+    exit();
 }
 
+
+
+
+if(isset($_POST['add-trend'])){
+    $city = $_POST['cityname'];
+    $shopName = $_POST['shop-name'];
+    $description = $_POST['description'];
+    $shopImag = $_FILES['shopeimage'];
+    $shopImagName = $shopImag['name'];
+    $shopImagTemp = $shopImag['tmp_name'];
+    $t = time();
+$nowDate = date('Y-m-d',$t);
+$randomString = "$nowDate".hexdec(uniqid());
+    $ext=pathinfo( $shopImagName,PATHINFO_EXTENSION);
+    $newImgName="$randomString.$ext";
+    move_uploaded_file($shopImagTemp,"../city/$newImgName");
+    // Insert the record into the database
+    $query = "INSERT INTO trendshops (`T_shope_name`, `cities_id`, `description`, `image`) 
+              VALUES ('$shopName', (SELECT id FROM cities WHERE cityname = '$city'), '$description', ' $newImgName')";
+    $insert_query = mysqli_query($conn, $query);
+    if($insert_query){
+        $message[] = "Shop added successfully";
+        header('location:show-trendshop.php');
+        exit();
+    } else {
+        $message[] = "Shop not added";
+    }
+}
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -68,72 +96,39 @@ select{
     </nav>
     <div class="container py-5">
         <div class="row">
-
             <div class="col-md-6 offset-md-3">
                 <h3 class="mb-3">Add trend shop</h3>
                 <div class="card">
                     <div class="card-body p-5">
-                        <form action="codetrend.php" method="post">
-                            <form method="post">
+                        <form action="addtrend.php" method="post" enctype="multipart/form-data">
                             <div class="form-group">
-                                
-                              
-                                <select name="cityname" id=""  require >
-                                <option value="city">  cityname </option>
-
-                                    <?php
-                                  
-                                    $query1 ="SELECT * FROM cities";
-                                    $query_run1 = mysqli_query($conn, $query1);  
-                                    if(mysqli_num_rows($query_run1) > 0){
-                                    foreach($query_run1 as $row1) {
-                                   
-                                   ?>
-                                        <option value="<?= $row1['id']; ?>">  <?= $row1['cityname']; ?>  </option>
-                                
-                                        </div>
-                                    
-                                <?php
-                                    }}?>
-                                    </select>
-                              </form>
-                           
-                           
+                                <input type="text" class="form-control" name="cityname" required placeholder="City Name">
+                            </div>
                             <br>
                             <div class="form-group">
-                             
-                              <input type="text" class="form-control"name="shopname"require placeholder="shop Name">
+                                <input type="text" class="form-control" name="shop-name" required placeholder="Shop Name">
                             </div>
                             <br>
                             <br>
                             <div class="form-group">
-                             
-                              <input type="text" class="form-control"name="description"require placeholder="description	">
+                                <input type="text" class="form-control" name="description" required placeholder="Description">
                             </div>
                             <br>
                             <br>
                             <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="customFile"name="image"require>
-                                <label class="custom-file-label" for="customFile">Choose Image</label>
+                                <input type="file"  name="shopeimage" required>
                             </div>
                             <br>
-                            
-
                             <div class="text-center mt-5">
-                                <button type="submit" class="btn btn-primary" name="addtrend">Add</button>
-                               
+                                <button type="submit" class="btn btn-primary" name="add-trend">Add</button>
                             </div>
                         </form>
-                       
-                            
-             </div>
+                    </div>
                 </div>
             </div>
-
         </div>
     </div>
     <script src="../js/jquery-3.5.1.min.js"></script>
-
     <script src="../js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

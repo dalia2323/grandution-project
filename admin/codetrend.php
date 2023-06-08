@@ -1,4 +1,3 @@
-
 <?php
 include('../handler/db.php');
 session_start();
@@ -8,17 +7,24 @@ if(!isset($_SESSION['admin'])){
   }
 
 
-?>
-<?php
-if(isset($_POST['addternd'])){
-                        $cityname = $_POST['cityname'];
-                        $shopname = $_POST['shopname'];
-                        $description= $_POST['description'];
-                        $file = $_FILES['image'];
-                        $sql = "INSERT INTO trendshops,cities (T_shope_name,description,image) VALUES ( $shopname, $description, $file) where cities.id=trendshops.cities_id and ceties.name=$cityname ";
-                       
-                       mysqli_query($conn,$sql);
-                        
-}
+  if(isset($_POST['add-trend'])){
+    $city=$_POST['cityname'];
+    $shopName=$_POST['shop-name'];
+    $description=$_POST['description'];
+    $shopImag=$_FILES['shopeimage']['name'];
+    $target="../images/trends/".$shopImag;
+    $shopImagTempName = $_FILES['shopeimage']['tmp_name'];
+     $query="INSERT INTO trendshops (`T_shope_name`, `cities_id`,`description`,`image` ) 
+    VALUES ('$shopName', (SELECT id FROM cities WHERE cityname = ' $city'),'$description','$shopImag')";
+    $insert_query=mysqli_query($conn,$query);
+    if($insert_query){
+      move_uploaded_file($shopImagTempName,$target);
+      $massege[]="shop added successfully";
+      header('location:show-trendshop.php');
+    }
+    else{
+      $massege[]="shop not added";
+    }
+  }
               ?>
                           
