@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/all.min.css">
 </head>
 <body>
+    
 <?php
 session_start();
 include('handler/db.php');

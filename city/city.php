@@ -1,15 +1,32 @@
 <?php
 session_start();
+
 include('../handler/db.php');
 if (!isset($_SESSION['user'])) {
   header('location:login.php');
   exit();
 }
+$email = $_SESSION['user']['email'];
+
+if (isset($_POST['favorite'])) {
+  // Get the shop ID from the form
+  $shopId = $_POST['item_id'];
+
+  // Get the user ID from the session
+
+  // Insert the shop and user IDs into the favorites table
+  $query = "INSERT INTO favorites
+  (user_id, shop_id) VALUES ((SELECT id FROM users WHERE email = '$email'), '$shopId')";
+  $result = mysqli_query($conn, $query);
+  if ($result) {
+    // Insertion successful
+  }
+}
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -38,6 +55,10 @@ if (!isset($_SESSION['user'])) {
     <title>Qalqilia page</title>
 </head>
 <style>
+     .fav-btn{
+        
+       color:red;
+    }
 /* width */
 ::-webkit-scrollbar {
     width: 10px;
@@ -157,7 +178,7 @@ if (!isset($_SESSION['user'])) {
         // Sanitize the user input to prevent SQL injection
         $selectedStreet = $_POST['street-btn'];
         $_SESSION['street-name'] = $selectedStreet;
-        $query = "SELECT shops.shopname AS shop_name, shops.image as shopImage
+        $query = "SELECT shops.shopname AS shop_name, shops.image as shopImage,shops.id as shop_id
               FROM cities
               INNER JOIN streets ON cities.id = streets.cities_id
               INNER JOIN shops ON streets.id = shops.street_id 
@@ -168,25 +189,26 @@ if (!isset($_SESSION['user'])) {
         if ($result) {
           while ($row = mysqli_fetch_assoc($result)) {
       ?>
+           
             <div class="shops" id="shopdiv">
-                <div class="imgshop">
-                <img src="<?php echo $row['shopImage']; ?>">
-                </div>
-                <div class="description">
-                    <p> <?php echo $row['shop_name'] ?> </p>
-                </div>
-                <div class="react">
-                    <i class="fa-regular fa-heart"></i>
-                    <i class="fa-solid fa-star"></i>
-                </div>
+            <div class="imgshop">
+                <img src="<?php echo $row['shopImage'] ?>">
             </div>
+            <div class="description">
+                <p> <?php echo $row['shop_name'] ?> </p>
+            </div>
+            <div class="react">
+                <input type="hidden" name="item_id" value="<?php echo $row['shop_id']; ?>">
+                <i class="far fa-heart favorite-btn deema" id="<?php echo $row['shop_id']; ?>" onclick="handleFav(this)"></i>
+            </div>
+        </div>
             <?php
           }
         }
       } elseif (isset($_POST['allcategory-btn'])) {
         $street = $_SESSION['street-name'];
         
-        $query = "SELECT shops.shopname AS shop_name, shops.image as shopImage
+        $query = "SELECT shops.shopname AS shop_name, shops.image as shopImage ,shops.id as shop_id
               FROM cities
               INNER JOIN streets ON cities.id = streets.cities_id
               INNER JOIN shops ON streets.id = shops.street_id 
@@ -196,6 +218,7 @@ if (!isset($_SESSION['user'])) {
         $result = mysqli_query($conn, $query);
         if ($result) {
           while ($row = mysqli_fetch_assoc($result)) {
+            
       ?>
             <div class="shops" id="shopdiv">
                 <div class="imgshop">
@@ -205,10 +228,10 @@ if (!isset($_SESSION['user'])) {
                     <p> <?php echo $row['shop_name'] ?> </p>
                 </div>
                 <div class="react">
-                   <form action="" method="post"> <i class="fa-regular fa-heart"></i>
-                   </form>
-                    <i class="fa-solid fa-star"></i>
-                </div>
+    <input type="hidden" name="item_id" value="<?php echo $row['shop_id']; ?>">
+    <button type="button" class="favorite-btn  deema" id="<?php echo $row['shop_id']; ?>" onclick="handleFav(this)">Favorite</button>
+</div>
+
             </div>
             <?php
           }
@@ -217,8 +240,9 @@ if (!isset($_SESSION['user'])) {
         $street = $_SESSION['street-name'];
         $selectedCategory = $_POST['category-btn'];
 
-        $query = "SELECT s.shopname 
-        FROM shops s 
+        $query = "SELECT s.shopname AS shop_name, s.image as shopImage ,
+        s.id as shop_id
+        FROM shops s
         JOIN streets st ON s.street_id = st.id 
         JOIN cities c ON st.cities_id = c.id 
         JOIN categories cat ON s.category_id = cat.id
@@ -237,9 +261,10 @@ if (!isset($_SESSION['user'])) {
                     <p> <?php echo $row['shop_name'] ?> </p>
                 </div>
                 <div class="react">
-                    <i class="fa-regular fa-heart"></i>
-                    <i class="fa-solid fa-star"></i>
-                </div>
+    <input type="hidden" name="item_id" value="<?php echo $row['shop_id']; ?>">
+    <button type="button" class="favorite-btn deema" id="<?php echo $row['shop_id']; ?>"onclick="handleFav(this)">Favorite</button>
+</div>
+
             </div>
             <?php
           }
@@ -277,10 +302,34 @@ if (!isset($_SESSION['user'])) {
 </body>
 
 <script>
+    //تغيير لون الفيفرت
+    function handleFav (i) {
+        console.log(i.id);
+        i.classList.toggle("fav-btn");
+    }
+    // اخفاء المحلات
 function hideShopDiv() {
     var shopDiv = document.getElementById("shopdiv");
     shopDiv.style.display = "none";
 }
+//منع تحديث الصفحة بعد الظغط على بوتن الفيفرت
+$(document).ready(function() {
+  $('.favorite-btn').click(function() {
+    var shopId = $(this).attr('id');
+    
+    $.ajax({
+      url: 'favorite.php', // Replace with the path to your PHP file handling the favorite functionality
+      method: 'POST',
+      data: { item_id: shopId },
+      success: function(response) {
+        // Handle the response here if needed
+        console.log(response);
+      }
+    });
+  });
+});
+
+
 </script>
 
 </html>
