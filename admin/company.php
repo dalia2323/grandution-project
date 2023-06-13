@@ -6,14 +6,65 @@ include('../handler/db.php');
 <?php
 session_start();
 if(!isset($_SESSION['admin'])){
-  header('location:../admin-login.php');
+  header('location:admin-login.php');
   exit();
 
 }
 
+if(isset($_POST['add'])){
+  $city = $_POST['citytname'];
+  $streetname = $_POST['streetname'];
+  $companyname = $_POST['companyname'];
+  $shopName = $_POST['shopname'];
+  $catrgoryname =$_POST['catrgoryname'];
 
+  $shopImag = $_FILES['shopeimage'];
+  $shopImagName = $shopImag['name'];
 
+  $shopImagTemp = $shopImag['tmp_name'];
+  $t = time();
+$nowDate = date('Y-m-d',$t);
+$randomString = "$nowDate".hexdec(uniqid());
+  $ext=pathinfo( $shopImagName,PATHINFO_EXTENSION);
+  $newImgName="$randomString.$ext";
+  move_uploaded_file($shopImagTemp,"../city/$newImgName");
+  // Insert the record into the database
+  $query1 = "INSERT INTO cities (cityname) VALUES (SELECT id FROM cities WHERE cityname ='$city')";
+  $query2="INSERT INTO streets (streetname, city_id) VALUES ('$streetname', LAST_INSERT_ID())";
+  $query3="INSERT INTO companies (companyname) VALUES ('$companyname')"; 
+  $query4="INSERT INTO shop (shopname, street_id, company_id,image) 
+  VALUES ('$shopname', LAST_INSERT_ID(), LAST_INSERT_ID(),$newImgName)
+  "  ; 
+  $query5="INSERT INTO category (categoryname, shop_id) 
+  VALUES ('$catrgoryname', LAST_INSERT_ID())"; 
+   
+  $insert_query1 = mysqli_query($conn, $query1);
+  $insert_query2 = mysqli_query($conn, $query2);
+  $insert_query3 = mysqli_query($conn, $query3);
+  $insert_query4 = mysqli_query($conn, $query4);
+  $insert_query5 = mysqli_query($conn, $query5);
+  
+  
+  if($insert_query1 ){
+  if ($insert_query2) {
+    
+    if ($insert_query3) {
+      if ($insert_query4) {
+        if ($insert_query5) {
+
+  
+      $message[] = "Shop added successfully";
+      header('location:show.php');
+      exit();
+  } }
+
+}}}}
+else {
+  $message[] = "Shop not added";
+}
 ?>
+
+
 <!-- success session -->
 <!DOCTYPE html>
 <html lang="en">
@@ -86,131 +137,57 @@ select{
                     <div class="card-body p-5">
                         <form action="show.php" method="post">
                             <form method="post">
-                            <div class="form-group">
-                                
-                              
-                                <select name="cityname" id=""  require >
-                                <option value="city">  cityname </option>
-
-                                    <?php
-                                  
-                                    $query1 ="SELECT * FROM cities";
-                                    $query_run1 = mysqli_query($conn, $query1);  
-                                    if(mysqli_num_rows($query_run1) > 0){
-                                    foreach($query_run1 as $row1) {
-                                   
-                                   ?>
-                                        <option value="<?= $row1['id']; ?>">  <?= $row1['cityname']; ?>  </option>
-                                
-                                        </div>
-                                    
-                                <?php
-                                    }}?>
-                                    </select>
-                              </form>
-                              <div class="form-group">
-                                <select name="cityname" id=""  require >
-                              <?php
-                              if (isset($_POST['cityName'])) {
-                                    $cityName = ($_POST['cityName']);
-                                    $query = "SELECT streets.streetname as street
-              FROM cities
-              INNER JOIN streets ON cities.id = streets.cities_id
-              WHERE cities.cityname = '$cityName'";
-                                    $query_run = mysqli_query($conn, $query);
-
-                                     while ($row = mysqli_fetch_assoc($query_run)) {
-                                              ?>
                            
-                              
-                                <option value="city"><?php echo $row['street']; ?>   </option>
-
-                                <?php
- }}
- ?>
- </select>
-                          </div>
                           
+                            <br>
+                            <div class="form-group">
+                             
+                              <input type="text" class="form-control"name="cityname"require placeholder="city Name">
+                            </div>
+                            
+                   
+                            <br>
+                            <div class="form-group">
+                             
+                              <input type="text" class="form-control"name="streetname"require placeholder="street Name">
+                            </div>
+                            
+                           
                             <br>
                             <div class="form-group">
                              
                               <input type="text" class="form-control"name="companyname"require placeholder="company Name">
                             </div>
                             
+                       
                             <br>
-                            
                             <div class="form-group">
-                                
-                              
-                                <select name="categoryname" id=""  require >
-                                <option value="category">  categoryname </option>
-
-                                    <?php
-                                  
-                                    $query1 ="SELECT * FROM categories";
-                                    $query_run1 = mysqli_query($conn, $query1);  
-                                    if(mysqli_num_rows($query_run1) > 0){
-                                    foreach($query_run1 as $row1) {
-                                   
-                                   ?>
-                                        <option value="<?= $row1['id']; ?>">  <?= $row1['categoryname']; ?>  </option>
-                                
-                                        </div>
-                                <?php
-                                    }}?>
-                              
-                              <div class="form-group">
-                               
-                                <input type="text" class="form-control"name="shopname"require placeholder="Shop Name">
-                              </div>
-                              <br>
+                             
+                              <input type="text" class="form-control"name="shopname"require placeholder="shop Name">
+                            </div>
                             
+                            <br>
+                            <div class="form-group">
+                             
+                             <input type="text" class="form-control"name="catrgoryname"require placeholder="catrgory name">
+                           </div>
+                           
+                           <br>
+                            
+                               
+                               
                             <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="customFile"name="image"require>
+                                <input type="file" class="custom-file-input" id="customFile"name="shopimage"require>
                                 <label class="custom-file-label" for="customFile">Choose Image</label>
                             </div>
                             <br>
                             <div class="text-center mt-5">
                                 <button type="submit" class="btn btn-primary" name="add">Add</button>
-                                <a class="btn btn-dark" href="#">Back</a>
+                                <a class="btn btn-dark" href="show.php">Back</a>
                             </div>
                         </form>
                         
-                        <?php
-                        if(isset($_POST['add'])){
-
-                            $cityname=$_POST ['cityname'];
-                            $streetname=$_POST ['streetname'];
-                            $categoryname=$_POST ['categoryname'];
-                            $shopname=$_POST ['shopname'];
-                            $image=$_POST ['image'];
-                            $_companyname ['companyname'];
                        
-                        $query1="INSERT INTO cities (cityname)  VALUES ('$cityname')";
-                        $query_run1=mysqli_query($conn,$query1);
-                        if($query_run1){
-                        $query2="INSERT INTO streets (streetname)  VALUES ('$streetname')";
-                        $query_run2=mysqli_query($conn,$query2);
-                        if($query_run2){
-                        $query3="INSERT INTO categories (categoryname)  VALUES ('$categoryname')";
-                        $query_run3=mysqli_query($conn,$query3);
-                        if($query_run3){
-                        $query4="INSERT INTO companies (_companyname) VALUES ('$_companyname')";
-                        $query_run4=mysqli_query($conn,$query4);
-                        if($query_run4){
-                        $query5="INSERT INTO shops (shopname,image) VALUES ('$shopname', '$image')";
-                        $query_run5=mysqli_query($conn,$query5);
-                        if($query_run5){
-                            $_SESSION['success']="Your Data Is added";
-                            header("location:show.php");
-                        
-                        }}}}}
-                       else{
-                            $_SESSION['status']="Your Data NOT added";
-                            header("show.php");
-                      }
-                        }
-                        ?>
                        
                       
              </div>
