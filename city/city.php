@@ -149,18 +149,34 @@ if (isset($_POST['favorite'])) {
                         <button class="icons" type="submit" name="allcategory-btn" onclick="hideShopDiv()"
                             title="all">All</button>
                     </form>
-                    <?php
-                    $sql = "SELECT * FROM categories";
-                  $query_run = mysqli_query($conn, $sql);
-                 foreach ($query_run as $row) {
-                    ?>
+                    
                     <form action="" method="post">
-                        <button type="submit" class="icons" name="category-btn" onclick="hideShopDiv()"
-                            title="<?php echo $row['categoryname'] ?>">
-                            <i class="<?php echo $row['icone'] ?>"></i>
+                        <button type="submit" class="icons" name="category-btn1" 
+                            title="clothes">
+                            <i class="fa-solid fa-shirt"></i>
                         </button>
+                        <button type="submit" class="icons" name="category-btn2" 
+                            title="Makeup">
+                            <i class="fa-solid fa-paintbrush"></i>
+                        </button>   
+                         <button type="submit" class="icons" name="category-btn3" 
+                            title="Juices">
+                            <i class="fas fa-wine-glass"></i>
+                        </button>   
+                         <button type="submit" class="icons" name="category-btn4" 
+                            title="sweets">
+                            <i class="fas fa-birthday-cake"></i>
+                        </button>  
+                          <button type="submit" class="icons" name="category-btn5" 
+                            title="Restaurants">
+                            <i class="fas fa-utensils"></i>
+                        </button> 
+                           <button type="submit" class="icons" name="category-btn6" 
+                            title="furniture">
+                            <i class="fa-solid fa-couch"></i>
+                        </button>
+
                     </form>
-                    <?php } ?>
 
                 </div>
             </div>
@@ -199,7 +215,7 @@ if (isset($_POST['favorite'])) {
             </div>
             <div class="react">
                 <input type="hidden" name="item_id" value="<?php echo $row['shop_id']; ?>">
-                <i class="far fa-heart favorite-btn deema" id="<?php echo $row['shop_id']; ?>" onclick="handleFav(this)"></i>
+                <i class="far fa-heart favorite-btn " id="<?php echo $row['shop_id']; ?>" onclick="handleFav(this)"></i>
             </div>
         </div>
             <?php
@@ -228,17 +244,16 @@ if (isset($_POST['favorite'])) {
                     <p> <?php echo $row['shop_name'] ?> </p>
                 </div>
                 <div class="react">
-    <input type="hidden" name="item_id" value="<?php echo $row['shop_id']; ?>">
-    <button type="button" class="favorite-btn  deema" id="<?php echo $row['shop_id']; ?>" onclick="handleFav(this)">Favorite</button>
-</div>
+                <input type="hidden" name="item_id" value="<?php echo $row['shop_id']; ?>">
+                <i class="far fa-heart favorite-btn " id="<?php echo $row['shop_id']; ?>" onclick="handleFav(this)"></i>
+            </div>
 
             </div>
             <?php
           }
         }
-      } elseif (isset($_POST['category-btn'])) {
+      } elseif (isset($_POST['category-btn1'])) {
         $street = $_SESSION['street-name'];
-        $selectedCategory = $_POST['category-btn'];
 
         $query = "SELECT s.shopname AS shop_name, s.image as shopImage ,
         s.id as shop_id
@@ -246,7 +261,7 @@ if (isset($_POST['favorite'])) {
         JOIN streets st ON s.street_id = st.id 
         JOIN cities c ON st.cities_id = c.id 
         JOIN categories cat ON s.category_id = cat.id
-         WHERE c.cityname = '$cityName' AND st.streetname = '$street' AND cat.categoryname  = '$selectedCategory';
+         WHERE c.cityname = '$cityName' AND st.streetname = '$street' AND cat.categoryname  = 'clothes';
         ";
 
         $result = mysqli_query($conn, $query);
@@ -261,24 +276,185 @@ if (isset($_POST['favorite'])) {
                     <p> <?php echo $row['shop_name'] ?> </p>
                 </div>
                 <div class="react">
-    <input type="hidden" name="item_id" value="<?php echo $row['shop_id']; ?>">
-    <button type="button" class="favorite-btn deema" id="<?php echo $row['shop_id']; ?>"onclick="handleFav(this)">Favorite</button>
-</div>
-
+                <input type="hidden" name="item_id" value="<?php echo $row['shop_id']; ?>">
+                <i class="far fa-heart favorite-btn " id="<?php echo $row['shop_id']; ?>" onclick="handleFav(this)"></i>
             </div>
-            <?php
+
+          </div>
+<?php
+
           }
         }
       }
+       elseif (isset($_POST['category-btn2'])) {
+        $street = $_SESSION['street-name'];
+
+        $query = "SELECT s.shopname AS shop_name, s.image as shopImage ,
+        s.id as shop_id
+        FROM shops s
+        JOIN streets st ON s.street_id = st.id 
+        JOIN cities c ON st.cities_id = c.id 
+        JOIN categories cat ON s.category_id = cat.id
+         WHERE c.cityname = '$cityName' AND st.streetname = '$street' AND cat.categoryname  = 'Makeup';
+        ";
+
+        $result = mysqli_query($conn, $query);
+        if ($result) {
+          while ($row = mysqli_fetch_assoc($result)) {
       ?>
-        </div>
+            <div class="shops" id="shopdiv">
+                <div class="imgshop">
+                    <img src="<?php echo $row['shopImage'] ?>">
+                </div>
+                <div class="description">
+                    <p> <?php echo $row['shop_name'] ?> </p>
+                </div>
+                <div class="react">
+                <input type="hidden" name="item_id" value="<?php echo $row['shop_id']; ?>">
+                <i class="far fa-heart favorite-btn " id="<?php echo $row['shop_id']; ?>" onclick="handleFav(this)"></i>
+            </div>
+          </div>
+          <?php
+          }
+        }
+      }
+      elseif (isset($_POST['category-btn3'])) {
+        $street = $_SESSION['street-name'];
+
+        $query = "SELECT s.shopname AS shop_name, s.image as shopImage ,
+        s.id as shop_id
+        FROM shops s
+        JOIN streets st ON s.street_id = st.id 
+        JOIN cities c ON st.cities_id = c.id 
+        JOIN categories cat ON s.category_id = cat.id
+         WHERE c.cityname = '$cityName' AND st.streetname = '$street' AND cat.categoryname  = 'Juices';
+        ";
+
+        $result = mysqli_query($conn, $query);
+        if ($result) {
+          while ($row = mysqli_fetch_assoc($result)) {
+      ?>
+            <div class="shops" id="shopdiv">
+                <div class="imgshop">
+                    <img src="<?php echo $row['shopImage'] ?>">
+                </div>
+                <div class="description">
+                    <p> <?php echo $row['shop_name'] ?> </p>
+                </div>
+                <div class="react">
+                <input type="hidden" name="item_id" value="<?php echo $row['shop_id']; ?>">
+                <i class="far fa-heart favorite-btn " id="<?php echo $row['shop_id']; ?>" onclick="handleFav(this)"></i>
+            </div>
+          </div>
+          <?php
+          }
+        }
+      } elseif (isset($_POST['category-btn4'])) {
+        $street = $_SESSION['street-name'];
+
+        $query = "SELECT s.shopname AS shop_name, s.image as shopImage ,
+        s.id as shop_id
+        FROM shops s
+        JOIN streets st ON s.street_id = st.id 
+        JOIN cities c ON st.cities_id = c.id 
+        JOIN categories cat ON s.category_id = cat.id
+         WHERE c.cityname = '$cityName' AND st.streetname = '$street' AND cat.categoryname  = 'sweets';
+        ";
+
+        $result = mysqli_query($conn, $query);
+        if ($result) {
+          while ($row = mysqli_fetch_assoc($result)) {
+      ?>
+            <div class="shops" id="shopdiv">
+                <div class="imgshop">
+                    <img src="<?php echo $row['shopImage'] ?>">
+                </div>
+                <div class="description">
+                    <p> <?php echo $row['shop_name'] ?> </p>
+                </div>
+                <div class="react">
+                <input type="hidden" name="item_id" value="<?php echo $row['shop_id']; ?>">
+                <i class="far fa-heart favorite-btn " id="<?php echo $row['shop_id']; ?>" onclick="handleFav(this)"></i>
+            </div>
+          </div>
+          <?php
+          }
+        }
+      } elseif (isset($_POST['category-btn5'])) {
+        $street = $_SESSION['street-name'];
+
+        $query = "SELECT s.shopname AS shop_name, s.image as shopImage ,
+        s.id as shop_id
+        FROM shops s
+        JOIN streets st ON s.street_id = st.id 
+        JOIN cities c ON st.cities_id = c.id 
+        JOIN categories cat ON s.category_id = cat.id
+         WHERE c.cityname = '$cityName' AND st.streetname = '$street' AND cat.categoryname  = 'Restaurants';
+        ";
+
+        $result = mysqli_query($conn, $query);
+        if ($result) {
+          while ($row = mysqli_fetch_assoc($result)) {
+      ?>
+            <div class="shops" id="shopdiv">
+                <div class="imgshop">
+                    <img src="<?php echo $row['shopImage'] ?>">
+                </div>
+                <div class="description">
+                    <p> <?php echo $row['shop_name'] ?> </p>
+                </div>
+                <div class="react">
+                <input type="hidden" name="item_id" value="<?php echo $row['shop_id']; ?>">
+                <i class="far fa-heart favorite-btn " id="<?php echo $row['shop_id']; ?>" onclick="handleFav(this)"></i>
+            </div>
+          </div>
+          <?php
+          }
+        }
+      } elseif (isset($_POST['category-btn6'])) {
+        $street = $_SESSION['street-name'];
+
+        $query = "SELECT s.shopname AS shop_name, s.image as shopImage ,
+        s.id as shop_id
+        FROM shops s
+        JOIN streets st ON s.street_id = st.id 
+        JOIN cities c ON st.cities_id = c.id 
+        JOIN categories cat ON s.category_id = cat.id
+         WHERE c.cityname = '$cityName' AND st.streetname = '$street' AND cat.categoryname  = 'furniture';
+        ";
+
+        $result = mysqli_query($conn, $query);
+        if ($result) {
+          while ($row = mysqli_fetch_assoc($result)) {
+      ?>
+            <div class="shops" id="shopdiv">
+                <div class="imgshop">
+                    <img src="<?php echo $row['shopImage'] ?>">
+                </div>
+                <div class="description">
+                    <p> <?php echo $row['shop_name'] ?> </p>
+                </div>
+                <div class="react">
+                <input type="hidden" name="item_id" value="<?php echo $row['shop_id']; ?>">
+                <i class="far fa-heart favorite-btn " id="<?php echo $row['shop_id']; ?>" onclick="handleFav(this)"></i>
+            </div>
+          </div>
+          <?php
+          }
+        }
+      }
+?>
+
+
+  </div>
 
     </div>
 
     <div class="fav-shop">
-        <div class="fav"> Trend shops</div>
-        <div class="Favorite">
-            <?php
+        <div class="fav"> Trend shops
+          
+        </div>
+        <?php
       $trendshop_query = "SELECT s.T_shope_name	 AS shop_name,
     s.description AS description, s.image AS image
           FROM trendshops AS s
@@ -296,7 +472,7 @@ if (isset($_POST['favorite'])) {
         }
       }
       ?>
-        </div>
+        
     </div>
 
 </body>

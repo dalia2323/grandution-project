@@ -155,7 +155,7 @@ height: 76px;
   /* border-radius: 25px ; */
   /* border-bottom-right-radius: 5px;
   border-top-right-radius: 5px; */
-/* overflow: auto; */
+overflow-x: auto;
   margin-left: 92px;
   margin-top: 20px;
   width: 860px;
@@ -322,6 +322,7 @@ cursor: pointer;}
 
 }
 .fav-shop{
+
   border: 3px solid #478e6865;
 border-radius: 15px;
     width: 320x;
@@ -343,7 +344,6 @@ overflow: scroll;
     font-size: 30px;
     padding-top: 15px;
     /* box-shadow: 5px 2px 18px 1px #6d706e; */
-    overflow: scroll;
 
   }
   

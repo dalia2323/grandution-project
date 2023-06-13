@@ -73,7 +73,7 @@ if(!isset($_SESSION['admin'])){
             <div class="col-md-10 offset-md-1">
 
                 <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h3>All users</h3>
+                    <h3>All Company</h3>
 
                     <!-- <a href="#" class="btn btn-success">
                         Add new
