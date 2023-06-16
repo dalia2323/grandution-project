@@ -31,11 +31,11 @@ $randomString = "$nowDate".hexdec(uniqid());
 
 $insert_query = mysqli_query($conn, $query);
 if($insert_query){
-echo "Shop added successfully";
-
+  $_SESSION['success']= "Shop added successfully";
+  header("location:show.php");
 exit();
 } else {
-echo "Shop not added";
+  $_SESSION['status']= "Shop not added";
 }
 }
 ?>
