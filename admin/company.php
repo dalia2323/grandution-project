@@ -5,29 +5,29 @@ include('../handler/db.php');
 ?>
 <?php
 session_start();
-if(!isset($_SESSION['admin'])){
+if(!isset($_SESSION['company'])){
   header('location:admin-login.php');
   exit();
 
 }
-  
-  if (isset($_POST['add'])) {
-    $cityName = $_POST['cityname'];
-    $streetname = $_POST['streetname'];
-   
-    $shopName = $_POST['shopname'];
-    $categoryname = $_POST['categoryname'];
-    $shopImag = $_FILES['shopeimage'];
-    $shopImagName = $shopImag['name'];
-    $shopImagTemp = $shopImag['tmp_name'];
-    $t = time();
+
+if (isset($_POST['add'])) {
+  $cityName = $_POST['cityname'];
+  $streetname = $_POST['streetname'];
+ 
+  $shopName = $_POST['shopname'];
+  $categoryname = $_POST['categoryname'];
+  $shopImag = $_FILES['shopeimage'];
+  $shopImagName = $shopImag['name'];
+  $shopImagTemp = $shopImag['tmp_name'];
+  $t = time();
 $nowDate = date('Y-m-d',$t);
 $randomString = "$nowDate".hexdec(uniqid());
-    $ext=pathinfo( $shopImagName,PATHINFO_EXTENSION);
-    $newImgName="$randomString.$ext";
-    move_uploaded_file($shopImagTemp,"../city/$newImgName");
-    $query ="INSERT INTO shops (shopname,`street_id`,`category_id`,`image`)VALUES( '$shopName',(SELECT id FROM streets WHERE streetname ='$streetname'),(SELECT id FROM categories WHERE categoryname ='$categoryname'),' $newImgName')";
-        
+  $ext=pathinfo( $shopImagName,PATHINFO_EXTENSION);
+  $newImgName="$randomString.$ext";
+  move_uploaded_file($shopImagTemp,"../city/$newImgName");
+  $query ="INSERT INTO shops (shopname,`street_id`,`category_id`,`image`)VALUES( '$shopName',(SELECT id FROM streets WHERE streetname ='$streetname'),(SELECT id FROM categories WHERE categoryname ='$categoryname'),' $newImgName')";
+      
 
 $insert_query = mysqli_query($conn, $query);
 if($insert_query){
@@ -39,8 +39,6 @@ echo "Shop not added";
 }
 }
 ?>
- 
-
 
 
 
@@ -70,7 +68,7 @@ select{
 <body>
      
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="admin.php">City guide </a>
+        <a class="navbar-brand" href="company.php">City guide </a>
    
 </li>
             </ul>
