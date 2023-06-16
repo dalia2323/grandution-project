@@ -17,12 +17,16 @@ if(!isset($_SESSION['admin'])){
    
     $shopName = $_POST['shopname'];
     $categoryname = $_POST['categoryname'];
-    
-    $query = "INSERT INTO `shops` (`id`, `shopname`, `status`, `street_id`, `category_id`, `image`, `favorite`) VALUES (NULL, '$shopName', '1',  (
-      SELECT id FROM streets WHERE streetname = $streetname LIMIT 1
-  ), (
-            SELECT id FROM categories WHERE categoryname = $categoryname LIMIT 1
-        ), '1.jpg', '0')";
+    $shopImag = $_FILES['shopeimage'];
+    $shopImagName = $shopImag['name'];
+    $shopImagTemp = $shopImag['tmp_name'];
+    $t = time();
+$nowDate = date('Y-m-d',$t);
+$randomString = "$nowDate".hexdec(uniqid());
+    $ext=pathinfo( $shopImagName,PATHINFO_EXTENSION);
+    $newImgName="$randomString.$ext";
+    move_uploaded_file($shopImagTemp,"../city/$newImgName");
+    $query ="INSERT INTO shops (shopname,`street_id`,`category_id`,`image`)VALUES( '$shopName',(SELECT id FROM streets WHERE streetname ='$streetname'),(SELECT id FROM categories WHERE categoryname ='$categoryname'),' $newImgName')";
         
 
 $insert_query = mysqli_query($conn, $query);
@@ -109,7 +113,7 @@ select{
                 <h3 class="mb-3">Add new shop</h3>
                 <div class="card">
                     <div class="card-body p-5">
-                        <form action="" method="post">
+                        <form action="" method="post" enctype="multipart/form-data">
                             <form method="post">
                             <div class="form-group">
                             <input type="text" class="form-control"name="cityname"require placeholder="city Name">
@@ -141,10 +145,9 @@ select{
                             
                                
                                
-                            <!-- <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="customFile"name="shopimage"require>
-                                <label class="custom-file-label" for="customFile">Choose Image</label>
-                            </div> -->
+                           <div class="custom-file">
+                                <input type="file"  name="shopeimage" required>
+                            </div>
                             <br>
                             <div class="text-center mt-5">
                                 <button type="submit" class="btn btn-primary" name="add">Add</button>

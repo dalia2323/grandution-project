@@ -5,64 +5,43 @@ include('../handler/db.php');
 ?>
 <?php
 session_start();
-if(!isset($_SESSION['company'])){
+if(!isset($_SESSION['admin'])){
   header('location:admin-login.php');
   exit();
 
 }
-
-if(isset($_POST['add'])){
-  $city = $_POST['citytname'];
-  $streetname = $_POST['streetname'];
-  $companyname = $_POST['companyname'];
-  $shopName = $_POST['shopname'];
-  $catrgoryname =$_POST['catrgoryname'];
-
-  $shopImag = $_FILES['shopeimage'];
-  $shopImagName = $shopImag['name'];
-
-  $shopImagTemp = $shopImag['tmp_name'];
-  $t = time();
+  
+  if (isset($_POST['add'])) {
+    $cityName = $_POST['cityname'];
+    $streetname = $_POST['streetname'];
+   
+    $shopName = $_POST['shopname'];
+    $categoryname = $_POST['categoryname'];
+    $shopImag = $_FILES['shopeimage'];
+    $shopImagName = $shopImag['name'];
+    $shopImagTemp = $shopImag['tmp_name'];
+    $t = time();
 $nowDate = date('Y-m-d',$t);
 $randomString = "$nowDate".hexdec(uniqid());
-  $ext=pathinfo( $shopImagName,PATHINFO_EXTENSION);
-  $newImgName="$randomString.$ext";
-  move_uploaded_file($shopImagTemp,"../city/$newImgName");
-  // Insert the record into the database
-  $query1 = "INSERT INTO cities (cityname) VALUES (SELECT id FROM cities WHERE cityname ='$city')";
-  $query2="INSERT INTO streets (streetname, city_id) VALUES ('$streetname', LAST_INSERT_ID())";
-  $query3="INSERT INTO companies (companyname) VALUES ('$companyname')"; 
-  $query4="INSERT INTO shop (shopname, street_id, company_id,image) 
-  VALUES ('$shopname', LAST_INSERT_ID(), LAST_INSERT_ID(),$newImgName)
-  "  ; 
-  $query5="INSERT INTO category (categoryname, shop_id) 
-  VALUES ('$catrgoryname', LAST_INSERT_ID())"; 
-   
-  $insert_query1 = mysqli_query($conn, $query1);
-  $insert_query2 = mysqli_query($conn, $query2);
-  $insert_query3 = mysqli_query($conn, $query3);
-  $insert_query4 = mysqli_query($conn, $query4);
-  $insert_query5 = mysqli_query($conn, $query5);
-  
-  
-  if($insert_query1 ){
-  if ($insert_query2) {
-    
-    if ($insert_query3) {
-      if ($insert_query4) {
-        if ($insert_query5) {
+    $ext=pathinfo( $shopImagName,PATHINFO_EXTENSION);
+    $newImgName="$randomString.$ext";
+    move_uploaded_file($shopImagTemp,"../city/$newImgName");
+    $query ="INSERT INTO shops (shopname,`street_id`,`category_id`,`image`)VALUES( '$shopName',(SELECT id FROM streets WHERE streetname ='$streetname'),(SELECT id FROM categories WHERE categoryname ='$categoryname'),' $newImgName')";
+        
 
-  
-      $message[] = "Shop added successfully";
-      header('location:show.php');
-      exit();
-  } }
+$insert_query = mysqli_query($conn, $query);
+if($insert_query){
+echo "Shop added successfully";
 
-}}}}
-else {
-  $message[] = "Shop not added";
+exit();
+} else {
+echo "Shop not added";
+}
 }
 ?>
+ 
+
+
 
 
 <!-- success session -->
@@ -110,36 +89,27 @@ select{
     </nav>
    
 
-      <div class="container py-5">
+    <div class="container py-5">
      <div class="row">
 
             <div class="col-md-6 offset-md-3">
                 <h3 class="mb-3">Add new shop</h3>
                 <div class="card">
                     <div class="card-body p-5">
-                        <form action="show.php" method="post">
+                        <form action="" method="post" enctype="multipart/form-data">
                             <form method="post">
-                           
-                          
+                            <div class="form-group">
+                            <input type="text" class="form-control"name="cityname"require placeholder="city Name">
+ 
                             <br>
                             <div class="form-group">
-                             
-                              <input type="text" class="form-control"name="cityname"require placeholder="city Name">
-                            </div>
-                            
-                   
+                            <input type="text" class="form-control"name="streetname"require placeholder="street Name">
+ 
                             <br>
-                            <div class="form-group">
-                             
-                              <input type="text" class="form-control"name="streetname"require placeholder="street Name">
-                            </div>
-                            
-                           
-                            <br>
-                            <div class="form-group">
+                            <!-- <div class="form-group">
                              
                               <input type="text" class="form-control"name="companyname"require placeholder="company Name">
-                            </div>
+                            </div> -->
                             
                        
                             <br>
@@ -151,21 +121,20 @@ select{
                             <br>
                             <div class="form-group">
                              
-                             <input type="text" class="form-control"name="catrgoryname"require placeholder="catrgory name">
+                            <input type="text" class="form-control"name="categoryname" placeholder="Category Name" required>
                            </div>
                            
                            <br>
                             
                                
                                
-                            <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="customFile"name="shopimage"require>
-                                <label class="custom-file-label" for="customFile">Choose Image</label>
+                           <div class="custom-file">
+                                <input type="file"  name="shopeimage" required>
                             </div>
                             <br>
                             <div class="text-center mt-5">
                                 <button type="submit" class="btn btn-primary" name="add">Add</button>
-                                <a class="btn btn-dark" href="show.php">Back</a>
+                               
                             </div>
                         </form>
                         
