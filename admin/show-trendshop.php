@@ -133,7 +133,7 @@ if(isset($_SESSION['status'])&& $_SESSION['status']!='')
                             <td><?php echo $row['image'];?></td>
                             
                             <td>
-                                <FORM method="post" action="edit-user.php">
+                                <FORM method="post" action="edit-trend-shop.php">
                                   <input type="hidden" name="edit-id" value="<?php echo $row['id'];?>">
                                     <BUtton type="submit" name="edit-btn" class="btn btn-sm btn-info">
                                         <i class="fas fa-edit"></i>
@@ -143,9 +143,9 @@ if(isset($_SESSION['status'])&& $_SESSION['status']!='')
                             </td>
                           
                             <td>
-  <form method="post" action="code.php" onsubmit="return confirmDelete(event);">
-    <input type="hidden" name="delete-id" value="<?php echo $row['id'];?>">
-    <button type="submit" name="delete-btn" class="btn btn-sm btn-danger">
+  <form method="post" action="code.php" >
+    <input type="hidden" name="delete-id3" value="<?php echo $row['id'];?>">
+    <button type="submit" name="delete-btn3" class="btn btn-sm btn-danger">
       <i class="fas fa-trash"></i>
     </button>
   </form>

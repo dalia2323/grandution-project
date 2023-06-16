@@ -72,7 +72,7 @@ include('../handler/db.php');
         <div class="col-md-10 offset-md-1">
 
             <div class="d-flex justify-content-between align-items-center mb-3">
-                <h3>All Products</h3>
+                <h3>All Shop</h3>
                 <div class="text-center mt-5">
                 <a class="btn btn-dark" href="add-shop.php"name="add-shop">Add shop</a>                            </div>
             </div>

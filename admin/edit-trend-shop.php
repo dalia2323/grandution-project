@@ -1,5 +1,4 @@
 <?php
-//edit pending company
 include('../handler/db.php');
 session_start();
 
@@ -7,8 +6,8 @@ if(!isset($_SESSION['admin'])){
   header('location:admin-login.php');
   exit();
 }
-?>
 
+?>
 <?php
 $conn=mysqli_connect("localhost","root","","graduation_project");
 
@@ -42,17 +41,16 @@ $conn=mysqli_connect("localhost","root","","graduation_project");
                 <li class="nav-item ">
                   <a class="nav-link" href="handel-user.php">user</a>
                 </li>
-                <li class="nav-item active">
+                <li class="nav-item">
                   <a class="nav-link" href="handel-company.php">Company</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="show.php">Shops</a>
-              
                 </li>
                 <li class="nav-item ">
                   <a class="nav-link" href="addtrend.php">addtrend</a>
                 </li>
-                <li class="nav-item ">
+                <li class="nav-item active ">
                   <a class="nav-link" href="show-trendshop.php">Trend shop</a>
 </li>
             </ul>
@@ -63,58 +61,54 @@ $conn=mysqli_connect("localhost","root","","graduation_project");
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="admin-profile.php">Profile</a>
-                      <a class="dropdown-item" href="admin-login.php">Logout</a>
+                      <a class="dropdown-item" href="admin-logout.php">Logout</a>
                     </div>
                 </li>
             </ul>
         </div>
     </nav>
+
     <div class="container py-5">
         <div class="row">
 
             <div class="col-md-6 offset-md-3">
-                <h3 class="mb-3">Edit Company</h3>
+                <h3 class="mb-3">Edit User</h3>
                 <div class="card">
                     <div class="card-body p-5">
                       
                   <?php  
                   if(isset($_POST['edit-btn'])){
                     $id=$_POST['edit-id'];
-                    $query="select * from companies where id='$id'";
+                    $query="select * from trendshops where id='$id'";
                     $query_run=mysqli_query($conn,$query);
                     foreach($query_run as $row){
                         ?>
 
               
 
-                    <form method="post" action="code.php" >
+                    <form method="post" action="code.php" enctype="multipart/form-data">
                             <div class="form-group">
                             <input type="hidden" name="edit-id" value="<?php echo $row['id']?>">
 
-                              <label>User Name</label>
-                              <input type="text" class="form-control" name="edit-username" value="<?php echo $row['name']?>" placeholder="enter user name">
+                              <label>shop Name</label>
+                              <input type="text" class="form-control" name="edit-username" value="<?php echo $row['T_shope_name']?>" placeholder="enter shop name">
                             </div>
                             <div class="form-group">
-                                <label>Phone number</label>
-                                <input type="text" class="form-control" name="edit-phone" value="<?php echo $row['phone_number']?>"  placeholder="enter email">
-
-                            </div>
-                            <div class="form-group">
-                                <label>Email</label>
-                                <input type="text" class="form-control" name="edit-email" value="<?php echo $row['email']?>"  placeholder="enter email">
+                                <label>Descrption</label>
+                                <input type="text" class="form-control" name="edit-descrption" value="<?php echo $row['description']?>"  placeholder="enter descrption">
 
                             </div>
                             
 
                             <div class="form-group">
-                                <label>Password</label>
-                                <input type="password" class="form-control" name="edit-password" value="<?php echo $row['password']?>" placeholder="enter password">
+                                <label>Img</label>
+                                <input type="file" class="form-control" name="edit-img" value="<?php echo $row['image']?>" placeholder="enter password">
                             </div>
 
                               
                             <div class="text-center mt-5">
-                                <button type="submit" class="btn btn-primary" name="update-btn2">Update</button>
-                                <a class="btn btn-dark" href="handel-company.php">Back</a>
+                                <button type="submit" class="btn btn-primary" name="update-btn3">Update</button>
+                                <a class="btn btn-dark" href="handel-user.php">Back</a>
                             </div>
                         </form>
                  <?php   }

@@ -75,8 +75,8 @@ if(!isset($_SESSION['admin'])){
                 <div class="d-flex justify-content-between align-items-center mb-3">
                     <h3>Pending Company</h3>
 
-                    <a href="accept-company.php" class="btn btn-dark">
-accepted company                    </a>
+                    <a href="handel-company.php" class="btn btn-dark">
+                        pending company </a>
                 </div>
                 <?php
 if(isset($_SESSION['success'])&& $_SESSION['success']!='')
@@ -93,7 +93,7 @@ if(isset($_SESSION['status'])&& $_SESSION['status']!='')
 ?>
 
                 <?php
-             $query=" select * from companies where status='pending'";
+             $query=" select * from companies where status='accept'";
              $query_num=mysqli_query($conn,$query); 
               
               ?>
@@ -108,7 +108,6 @@ if(isset($_SESSION['status'])&& $_SESSION['status']!='')
                             <th scope="col">status</th>
                             <th scope="col">Edit</th>
                             <th scope="col">Delete</th>
-                            <th scope="col">action</th>
 
                         </tr>
                     </thead>
@@ -138,7 +137,7 @@ if(isset($_SESSION['status'])&& $_SESSION['status']!='')
 
                             </td>
                             <td>
-                                <FORM method="post" action="edit_company.php">
+                                <FORM method="post" action="edit-accept-company.php">
                                     <input type="hidden" name="edit-id" value="<?php echo $row['id'];?>">
                                     <BUtton type="submit" name="edit-btn" class="btn btn-sm btn-info">
                                         <i class="fas fa-edit"></i>
@@ -146,38 +145,18 @@ if(isset($_SESSION['status'])&& $_SESSION['status']!='')
 
                                 </FORM>
                             </td>
-                            <!-- <td>
-                              <form method="post" action="code.php">
-                              <input type="hidden" name="delete-id1" value="<?php echo $row['id'];?>">
-                              <BUtton type="submit" name="delete-btn1" class="btn btn-sm btn-danger">
-                                    <i class="fas fa-trash"></i>
-                                </a>
-                                </form>
-                            </td> -->
+                            
                             <td>
-                                <form method="post" action="code.php" onsubmit="return confirmDelete(event);">
-                                    <input type="hidden" name="delete-id1" value="<?php echo $row['id'];?>">
-                                    <button type="submit" name="delete-btn1" class="btn btn-sm btn-danger">
+                                <form method="post" action="code.php" >
+                                    <input type="hidden" name="delete-id1-accept" value="<?php echo $row['id'];?>">
+                                    <button type="submit" name="delete-btn1-accept" class="btn btn-sm btn-danger">
                                         <i class="fas fa-trash"></i>
                                     </button>
                                 </form>
                             </td>
-                            <td>
 
-                                <form method="post" action="code.php">
-                                    
-                                <input type="hidden" name="accept-id" value="<?php echo $row['id']; ?>">
-                                    <button id="accept-btn" type="submit" name="accept-btn"
-                                        class="btn btn-sm btn-success"
-                                        onclick="sendEmail('<?php echo $row['email']; ?>'); hideShopDiv();">
-                                        Accept
-                                    </button>
-                                    <input type="hidden" name="reject-id" value="<?php echo $row['id']; ?>">
-                                    <button id="reject-btn" type="submit" name="reject-btn"
-                                        class="btn btn-sm btn-danger">
-                                        Reject
-                                    </button>
-                                </form>
+
+
                         </tr>
                     </tbody>
 
@@ -234,17 +213,17 @@ if(isset($_SESSION['status'])&& $_SESSION['status']!='')
     function sendEmail(email) {
         var subject = 'Accepted Company'; // email subject
         var body =
-        'Dear Company,\n\nWe are pleased to inform you that your account has been accepted.\n\nBest regards,'; // email body
+            'Dear Company,\n\nWe are pleased to inform you that your account has been accepted.\n\nBest regards,'; // email body
         window.open('mailto:' + email + '?subject=' + subject + '&body=' + body);
     }
-//مش زابط
+    //مش زابط
     function hideShopDiv() {
         console.log("hideShopDiv() function called"); // Add this line
         var acceptBtn = document.getElementById("accept-btn");
         acceptBtn.style.display = "none";
         var rejectBtn = document.getElementById("reject-btn");
         rejectBtn.style.display = "none";
-    
+
     }
     </script>
 

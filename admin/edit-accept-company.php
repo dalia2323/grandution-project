@@ -89,7 +89,7 @@ $conn=mysqli_connect("localhost","root","","graduation_project");
 
                     <form method="post" action="code.php" >
                             <div class="form-group">
-                            <input type="hidden" name="edit-id" value="<?php echo $row['id']?>">
+                            <input type="hidden" name="edit-id-accept" value="<?php echo $row['id']?>">
 
                               <label>User Name</label>
                               <input type="text" class="form-control" name="edit-username" value="<?php echo $row['name']?>" placeholder="enter user name">
@@ -113,8 +113,8 @@ $conn=mysqli_connect("localhost","root","","graduation_project");
 
                               
                             <div class="text-center mt-5">
-                                <button type="submit" class="btn btn-primary" name="update-btn2">Update</button>
-                                <a class="btn btn-dark" href="handel-company.php">Back</a>
+                                <button type="submit" class="btn btn-primary" name="update-btn-accept">Update</button>
+                                <a class="btn btn-dark" href="accept-company.php">Back</a>
                             </div>
                         </form>
                  <?php   }
