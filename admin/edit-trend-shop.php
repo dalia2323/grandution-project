@@ -72,7 +72,7 @@ $conn=mysqli_connect("localhost","root","","graduation_project");
         <div class="row">
 
             <div class="col-md-6 offset-md-3">
-                <h3 class="mb-3">Edit User</h3>
+                <h3 class="mb-3">Edit Trend shop</h3>
                 <div class="card">
                     <div class="card-body p-5">
                       
