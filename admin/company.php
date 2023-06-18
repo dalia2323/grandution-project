@@ -75,7 +75,7 @@ select{
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="admin-profile.php">Profile</a>
-                      <a class="dropdown-item" href="admin-logout.php">Logout</a>
+                      <a class="dropdown-item" href="../logout.php">Logout</a>
                     </div>
                 </li>
             </ul>
