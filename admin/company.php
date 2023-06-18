@@ -27,7 +27,7 @@ $randomString = "$nowDate".hexdec(uniqid());
 
 $insert_query = mysqli_query($conn, $query);
 if($insert_query){
-echo "Shop added successfully";
+echo "your Shop added successfully";
 
 exit();
 } else {
